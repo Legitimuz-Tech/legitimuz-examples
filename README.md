@@ -31,11 +31,18 @@ Duas rotas, os mesmos nomes em toda linguagem: `POST /api/verificacoes` e
 
 | | Exemplo | Guia |
 | :-: | --- | --- |
+| <img src="https://cdn.simpleicons.org/nextdotjs/888888" width="16" /> | [`pocs/next-checkout`](pocs/next-checkout) | [Checkout Next.js](https://documentacao.legitimuz.com/guides/pocs/next-checkout) |
 | <img src="https://cdn.simpleicons.org/express/888888" width="16" /> | [`pocs/express-backend`](pocs/express-backend) | [Backend Express](https://documentacao.legitimuz.com/guides/pocs/express-backend) |
-
-Em breve: `next-checkout`, `fastapi-backend`, `laravel-backend`, `go-backend`,
-`webhook-receiver`, `queue-worker`, `multi-integration`, `qr-handoff`, `whatsapp-handoff`,
-`resume-expiry`, `local-tunnel`.
+| <img src="https://cdn.simpleicons.org/fastapi/009688" width="16" /> | [`pocs/fastapi-backend`](pocs/fastapi-backend) | [Backend FastAPI](https://documentacao.legitimuz.com/guides/pocs/fastapi-backend) |
+| <img src="https://cdn.simpleicons.org/laravel/ff2d20" width="16" /> | [`pocs/laravel-backend`](pocs/laravel-backend) | [Backend Laravel](https://documentacao.legitimuz.com/guides/pocs/laravel-backend) |
+| <img src="https://cdn.simpleicons.org/go/00add8" width="16" /> | [`pocs/go-backend`](pocs/go-backend) | [Backend Go](https://documentacao.legitimuz.com/guides/pocs/go-backend) |
+| <img src="https://cdn.simpleicons.org/nodedotjs/5fa04e" width="16" /> | [`pocs/webhook-receiver`](pocs/webhook-receiver) | [Receptor de webhook](https://documentacao.legitimuz.com/guides/pocs/webhook-receiver) |
+| <img src="https://cdn.simpleicons.org/redis/ff4438" width="16" /> | [`pocs/queue-worker`](pocs/queue-worker) | [Fila e worker](https://documentacao.legitimuz.com/guides/pocs/queue-worker) |
+| <img src="https://cdn.simpleicons.org/nodedotjs/5fa04e" width="16" /> | [`pocs/multi-integration`](pocs/multi-integration) | [Multi-integração](https://documentacao.legitimuz.com/guides/pocs/multi-integration) |
+| <img src="https://cdn.simpleicons.org/nextdotjs/888888" width="16" /> | [`pocs/qr-handoff`](pocs/qr-handoff) | [QR code](https://documentacao.legitimuz.com/guides/pocs/qr-handoff) |
+| <img src="https://cdn.simpleicons.org/whatsapp/25d366" width="16" /> | [`pocs/whatsapp-handoff`](pocs/whatsapp-handoff) | [WhatsApp](https://documentacao.legitimuz.com/guides/pocs/whatsapp-handoff) |
+| <img src="https://cdn.simpleicons.org/nextdotjs/888888" width="16" /> | [`pocs/resume-expiry`](pocs/resume-expiry) | [Retomada e expiração](https://documentacao.legitimuz.com/guides/pocs/resume-expiry) |
+| <img src="https://cdn.simpleicons.org/gnubash/4eaa25" width="16" /> | [`pocs/local-tunnel`](pocs/local-tunnel) | [Ambiente local](https://documentacao.legitimuz.com/guides/pocs/local-tunnel) |
 
 ## Mobile
 
