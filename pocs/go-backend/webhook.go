@@ -41,7 +41,7 @@ func assinaturaValida(corpoCru []byte, header, segredo string) bool {
 
 func receberWebhook(w http.ResponseWriter, r *http.Request) {
 	// Lê os bytes originais. Um json.NewDecoder(r.Body) aqui consumiria o corpo antes
-	// da conferência. O LimitReader não é decoração: sem teto, um corpo grande num
+	// da conferência. O LimitReader não é opcional: sem teto, um corpo grande num
 	// endpoint público vira consumo de memória sem limite.
 	corpoCru, err := io.ReadAll(io.LimitReader(r.Body, 1<<20))
 	if err != nil {

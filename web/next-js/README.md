@@ -23,7 +23,7 @@ package.json                     # referência de dependência, sem lockfile
 .env.local.example               # a sdkUrl, com prefixo NEXT_PUBLIC_
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -44,7 +44,7 @@ Numa integração real a `sdkUrl` **não** vem de variável de ambiente — ela 
 verificação. Busque-a num Server Component ou numa Route Handler e passe como prop. A variável aqui
 existe só para o exemplo caber numa tela.
 
-## O que morde
+## Pontos de atenção
 
 - **`"use client"` tem que ser a primeira linha do arquivo.** Um prólogo de diretiva não pode vir
   depois de um comentário. Com um comentário acima, a diretiva é ignorada em silêncio e o
@@ -54,7 +54,7 @@ existe só para o exemplo caber numa tela.
   `onLoad` do `<Script>` ativa.
 - **A dependência do efeito é `[sdkUrl]`.** Remontar a cada mudança de opção mataria a sessão.
 
-## O que não faz
+## Limitações
 
 Não emite a `sdkUrl` — veja [`pocs/next-checkout`](../../pocs/next-checkout) para a rota que a
 emite. Não trata o desfecho: a decisão chega ao seu backend por webhook.

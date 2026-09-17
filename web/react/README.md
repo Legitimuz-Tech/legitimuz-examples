@@ -27,7 +27,7 @@ src/
 
 `src/main.tsx`, `tsconfig.json` e `vite.config.ts` não estão aqui: são o scaffold padrão do Vite.
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -46,7 +46,7 @@ VITE_LEGITIMUZ_SDK_URL=<SUA_SDK_URL>
 O `.env` fica fora do controle de versão. A `sdkUrl` carrega a credencial da verificação no
 fragmento: nunca commite um valor real.
 
-## O que morde
+## Pontos de atenção
 
 - **A dependência do efeito é `[options.sdkUrl]`, não `[options]`.** Depender do objeto remontaria
   o widget a cada render e mataria a sessão em andamento.
@@ -54,7 +54,7 @@ fragmento: nunca commite um valor real.
   sobrevive ao unmount.
 - **O container precisa de altura.** É por isso que `VerificationWidget.tsx` existe.
 
-## O que não faz
+## Limitações
 
 Não emite a `sdkUrl` — ela nasce no seu backend. Não trata o desfecho: a decisão chega ao seu
 backend por webhook, nunca ao navegador.

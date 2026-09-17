@@ -27,10 +27,10 @@ achate tudo na raiz: o caminho é metade da informação que o exemplo entrega.
 <uma ou duas frases: a armadilha que este exemplo resolve>
 
 ## Arquivos              <- a árvore, com um comentário por arquivo
-## Onde cada um entra    <- tabela arquivo → destino → por quê
+## Onde cada arquivo entra <- tabela arquivo → destino → por quê
 ## Envs                  <- quando houver
-## O que morde           <- o que não é óbvio e gera chamado
-## O que não faz         <- os limites, explícitos
+## Pontos de atenção     <- o que não é óbvio e gera chamado
+## Limitações            <- os limites, explícitos
 ## Referência            <- links da doc, separados por ·
 ```
 

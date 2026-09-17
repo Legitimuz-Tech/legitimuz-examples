@@ -22,7 +22,7 @@ src/environments/environment.ts            # a sdkUrl
 package.json                               # referência de dependência, sem lockfile
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -39,7 +39,7 @@ Nenhuma. Angular não lê `.env`: a configuração vai no arquivo de environment
 Numa integração real o environment aponta o endereço do **seu backend**, não guarda uma `sdkUrl` —
 ela é emitida por verificação, em tempo de execução.
 
-## O que morde
+## Pontos de atenção
 
 - **Monte em `ngAfterViewInit`, não em `ngOnInit`.** O `@ViewChild` só existe depois que a view foi
   criada; em `ngOnInit` o `<div>` ainda não está lá.
@@ -48,7 +48,7 @@ ela é emitida por verificação, em tempo de execução.
   pede schema. Para usar `<legitimuz-websdk>` declarativamente, adicione
   `schemas: [CUSTOM_ELEMENTS_SCHEMA]` **no componente que usa a tag**, não no app inteiro.
 
-## O que não faz
+## Limitações
 
 Não emite a `sdkUrl` — ela nasce no seu backend. Não trata o desfecho: a decisão chega ao seu
 backend por webhook.

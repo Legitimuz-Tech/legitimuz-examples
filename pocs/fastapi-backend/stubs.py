@@ -15,7 +15,7 @@ class Cadastro:
 
 
 async def autenticar() -> Usuario:
-    """Dependência de mentira. Troque pela sua sessão real."""
+    """Dependência simulada. Troque pela sua sessão real."""
     return Usuario(id="usuario-1")
 
 

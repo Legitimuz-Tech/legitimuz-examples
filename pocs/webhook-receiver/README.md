@@ -20,7 +20,7 @@ lib/stubs.ts                         # db e fila — substitua
 .env.example                         # as três variáveis
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ LEGITIMUZ_WEBHOOK_SECRET=<SEGREDO_DO_ENDPOINT>
 As outras duas não são usadas aqui, mas ficam no `.env.example` porque a integração completa
 precisa das três.
 
-## O que morde
+## Pontos de atenção
 
 - **Corpo cru, antes de qualquer parse.** `request.text()`, nunca `request.json()`. Reserializar
   muda os bytes e a assinatura falha em toda entrega.
@@ -59,7 +59,7 @@ npx untun tunnel http://localhost:3000
 Cadastre a URL do túnel em Integrações → Segurança → Webhooks e dispare a entrega de teste pelo
 dashboard. Veja [`pocs/local-tunnel`](../local-tunnel).
 
-## O que não faz
+## Limitações
 
 Migrations e schema. Observabilidade e alerta. Sem retentativa própria — veja
 [`pocs/queue-worker`](../queue-worker).

@@ -27,7 +27,7 @@ package.json                   # referência de dependência, sem lockfile
 .env.example                   # as três variáveis
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -45,7 +45,7 @@ LEGITIMUZ_WEBHOOK_SECRET=<SEGREDO_DO_ENDPOINT>
 LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 ```
 
-## O que morde
+## Pontos de atenção
 
 - **O `ref_id` é único por conta.** Reaproveitá-lo depois da expiração com um corpo diferente
   responde `409 E_REF_ID_CONFLICT` — por isso o sufixo de tempo quando a jornada recomeça.
@@ -55,7 +55,7 @@ LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
   intervalo para descobrir isso gasta o teto da chave e não traz nada que o webhook não traga.
 - **Grave sempre o `ref_id` novo.** O webhook virá com ele, não com o antigo.
 
-## O que não faz
+## Limitações
 
 Sem limite de quantas vezes o mesmo cadastro pode recomeçar. Sem aviso ao titular de quanto tempo
 resta. Sem tratamento de CPF trocado entre uma tentativa e outra.

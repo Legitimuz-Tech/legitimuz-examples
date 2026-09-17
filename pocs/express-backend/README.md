@@ -21,7 +21,7 @@ package.json       # referência de dependência, sem lockfile
 .env.example       # as três variáveis
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -40,7 +40,7 @@ LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 Integrações → Segurança para as duas primeiras, Solução KYC → Fluxos para a terceira. Use uma
 integração **sandbox**; nenhuma das três vai para o browser.
 
-## O que morde
+## Pontos de atenção
 
 - **A ordem dos middlewares.** A rota de webhook usa `express.raw`, não `express.json`. Um
   `express.json()` global antes dela consome o corpo e a assinatura passa a falhar sempre.
@@ -52,9 +52,9 @@ integração **sandbox**; nenhuma das três vai para o browser.
 - **Deduplique pelo `X-Legitimuz-Delivery`.** A entrega é reenviada até seis vezes e a ordem não é
   garantida.
 
-## O que não faz
+## Limitações
 
-`autenticar()` é um stub, `db` é um objeto de mentira e `fila` não publica nada. Sem migration,
+`autenticar()`, `db` e `fila` são stubs sem implementação real. Sem migration,
 observabilidade ou retentativa própria. O `resposta.ok` não é conferido, para o exemplo caber numa
 tela — no seu código, confira.
 

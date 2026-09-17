@@ -1,4 +1,4 @@
-// Vem do seu backend, em entry.url. Nunca chumbe uma sdkUrl real aqui: ela carrega a credencial
+// Vem do seu backend, em entry.url. Nunca deixe uma sdkUrl real fixa aqui: ela carrega a credencial
 // da verificação no fragmento da URL.
 const SDK_URL = "<SUA_SDK_URL>";
 

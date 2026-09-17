@@ -25,7 +25,7 @@ src/
 
 `src/main.ts`, `tsconfig.json` e `vite.config.ts` não estão aqui: são o scaffold padrão do Vite.
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -42,7 +42,7 @@ VITE_LEGITIMUZ_SDK_URL=<SUA_SDK_URL>
 
 Gitignorado pelo padrão do Vite. Nunca commite um valor real.
 
-## O que morde
+## Pontos de atenção
 
 - **O container precisa de altura.** O iframe ocupa 100% da altura dele.
 - **`onUnmounted` chama `destroy()`.** Sem ele a stream de câmera sobrevive ao desmonte.
@@ -54,7 +54,7 @@ Gitignorado pelo padrão do Vite. Nunca commite um valor real.
   vue({ template: { compilerOptions: { isCustomElement: (tag) => tag === "legitimuz-websdk" } } })
   ```
 
-## O que não faz
+## Limitações
 
 Não emite a `sdkUrl` — ela nasce no seu backend. Não trata o desfecho: a decisão chega ao seu
 backend por webhook.

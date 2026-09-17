@@ -22,7 +22,7 @@ package.json                         # referência de dependência, sem lockfile
 .env.example                         # as três variáveis + REDIS_HOST
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ LEGITIMUZ_WEBHOOK_SECRET=<SEGREDO_DO_ENDPOINT>
 REDIS_HOST=localhost
 ```
 
-## O que morde
+## Pontos de atenção
 
 - **`jobId` substitui a tabela de deduplicação.** Um id só existe uma vez na fila, então a segunda
   entrega do mesmo evento não cria um segundo job.
@@ -48,7 +48,7 @@ REDIS_HOST=localhost
 - **Não processe dentro do request.** Uma tarefa lenta vira timeout, a entrega é reenviada, e o seu
   retry passa a ser o retry da Legitimuz — que não conhece o seu banco.
 
-## O que não faz
+## Limitações
 
 Sem dead-letter queue: depois de 5 tentativas o job fica em `failed` e ninguém é avisado. Sem
 métrica de profundidade da fila. Sem lock por `ref_id`, então dois eventos da mesma verificação

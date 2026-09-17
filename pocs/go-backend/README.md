@@ -20,7 +20,7 @@ go.mod            # sem dependência externa
 .env.example      # as três variáveis
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -37,9 +37,9 @@ LEGITIMUZ_WEBHOOK_SECRET=<SEGREDO_DO_ENDPOINT>
 LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 ```
 
-## O que morde
+## Pontos de atenção
 
-- **`io.LimitReader` não é decoração.** Sem teto, um corpo grande no seu endpoint público vira
+- **`io.LimitReader` não é opcional.** Sem teto, um corpo grande no seu endpoint público vira
   consumo de memória sem limite.
 - **Leia os bytes antes de decodificar.** Um `json.NewDecoder(r.Body)` consumiria o corpo antes da
   conferência da assinatura.
@@ -47,9 +47,9 @@ LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 - **A tolerância é nos dois sentidos.** O relógio do seu servidor pode estar adiantado, por isso a
   comparação testa `d > tolerancia || d < -tolerancia`.
 
-## O que não faz
+## Limitações
 
-`db` e `fila` são variáveis de pacote fictícias. Sem `context` de cancelamento no worker e sem
+`db` e `fila` são stubs de pacote. Sem `context` de cancelamento no worker e sem
 retry na criação — o catálogo de quando repetir está em
 [erros](https://documentacao.legitimuz.com/api/errors).
 

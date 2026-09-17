@@ -21,7 +21,7 @@ package.json                          # referência de dependência, sem lockfil
 .env.example                          # as três variáveis
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ LEGITIMUZ_WEBHOOK_SECRET=<SEGREDO_DO_ENDPOINT>
 LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 ```
 
-## O que morde
+## Pontos de atenção
 
 - **A `entry.url` carrega a credencial da jornada.** Não a coloque em `<a href>`, em parâmetro de
   query, em log ou em analytics. O QR é a única superfície onde ela deve aparecer, e só para o
@@ -48,7 +48,7 @@ LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 - **Confira `entry.kind`.** Só `"web"` tem `url` para virar QR.
 - **A imagem tem `alt`.** É a única pista para quem usa leitor de tela.
 
-## O que não faz
+## Limitações
 
 Polling simples de 3 segundos — em produção, SSE ou WebSocket poupa requisição. Sem botão de
 reenviar por SMS. Sem tratamento de titular que abre o QR em dois aparelhos.

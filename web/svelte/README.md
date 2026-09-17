@@ -22,7 +22,7 @@ src/routes/verificacao/+page.svelte       # passa a sdkUrl como prop
 package.json                              # referência de dependência, sem lockfile
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -36,7 +36,7 @@ package.json                              # referência de dependência, sem loc
 Nenhuma no cliente. A `sdkUrl` chega pelo `load` do servidor. A chave de API fica na sua rota de
 API, que este exemplo não traz — veja [`pocs/express-backend`](../../pocs/express-backend).
 
-## O que morde
+## Pontos de atenção
 
 - **O retorno do `onMount` é o cleanup.** É ele que chama `destroy()`. Sem isso, o indicador de
   câmera do browser continua aceso depois de navegar para outra rota.
@@ -44,7 +44,7 @@ API, que este exemplo não traz — veja [`pocs/express-backend`](../../pocs/exp
   array comum não atualizaria a tela.
 - **O container precisa de altura.**
 
-## O que não faz
+## Limitações
 
 Não traz a rota `/api/verificacoes`. Não trata o desfecho: a decisão chega ao seu backend por
 webhook.

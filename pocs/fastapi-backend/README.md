@@ -21,7 +21,7 @@ requirements.txt    # referência de dependência
 .env.example        # as três variáveis
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ LEGITIMUZ_WEBHOOK_SECRET=<SEGREDO_DO_ENDPOINT>
 LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 ```
 
-## O que morde
+## Pontos de atenção
 
 - **Não declare o corpo do webhook como modelo Pydantic.** O FastAPI faria o parse, o
   `request.body()` viria vazio ou reserializado, e a conferência falharia em toda entrega.
@@ -47,9 +47,9 @@ LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 - **`hmac.compare_digest`**, não `==`: comparação em tempo constante.
 - **O CPF vem do seu cadastro**, nunca do corpo da requisição.
 
-## O que não faz
+## Limitações
 
-`autenticar` é uma dependência de mentira, `db` e `fila` são stubs. Sem retry na criação — o
+`autenticar` é uma dependência simulada, `db` e `fila` são stubs. Sem retry na criação — o
 catálogo de quando repetir está em [erros](https://documentacao.legitimuz.com/api/errors). Sem
 migration e sem observabilidade.
 

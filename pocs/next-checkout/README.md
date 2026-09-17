@@ -22,7 +22,7 @@ package.json                         # referência de dependência, sem lockfile
 .env.example                         # as três variáveis
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -41,7 +41,7 @@ LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 
 Sem prefixo `NEXT_PUBLIC_`: as três só existem no servidor.
 
-## O que morde
+## Pontos de atenção
 
 - **A tela nunca libera o cadastro.** Ela só muda para "aguardando". Quem libera é o handler de
   webhook, no servidor, onde o titular não pode interferir.
@@ -50,7 +50,7 @@ Sem prefixo `NEXT_PUBLIC_`: as três só existem no servidor.
   flag, o widget monta num container que já saiu da árvore.
 - **`request.text()`, não `request.json()`**, na rota de webhook.
 
-## O que não faz
+## Limitações
 
 Migrations e schema. Observabilidade e alerta. Tela de retomada quando o titular abandona e volta —
 veja [`pocs/resume-expiry`](../resume-expiry).

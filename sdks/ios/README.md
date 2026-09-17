@@ -20,7 +20,7 @@ Verificacao/Info.plist               # as três chaves de permissão
 conferir-xcframework.sh              # baixa e confere o SHA-256 antes de embutir
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -42,7 +42,7 @@ está como **Embed & Sign**.
 
 Peça ao [suporte](https://painel.legitimuz.com/support) qual versão usar.
 
-## O que morde
+## Pontos de atenção
 
 - **`@unknown default` não é opcional.** A SDK é compilada com library evolution, então os enums
   públicos são resilientes e o `switch` não compila sem ele. Vale para
@@ -58,7 +58,7 @@ Peça ao [suporte](https://painel.legitimuz.com/support) qual versão usar.
 - **`LegitimuzEmbedURL.parse` aceita `https://` ou `http://localhost`** — é o que o WebKit exige
   para liberar câmera e microfone.
 
-## O que não faz
+## Limitações
 
 Não cria a verificação — veja [`pocs/express-backend`](../../pocs/express-backend) ou qualquer
 outro backend. Não traz `.xcodeproj`, `project.yml` nem observação de `session.events`; o catálogo

@@ -24,7 +24,7 @@ package.json                   # referência de dependência, sem lockfile
 .env.example                   # a chave e o fluxo, só no servidor
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -42,7 +42,7 @@ LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 
 Sem prefixo público. O `loader` roda só no servidor, então a chave nunca chega ao bundle.
 
-## O que morde
+## Pontos de atenção
 
 - **O `loader` devolve a `sdkUrl`, não a resposta inteira.** Tudo que sai do loader vai serializado
   para o cliente: devolver `verification` junto mandaria o `public_id` para o browser sem
@@ -51,7 +51,7 @@ Sem prefixo público. O `loader` roda só no servidor, então a chave nunca cheg
 - **O hook aqui devolve `{ containerRef, status }`**, um pouco diferente do
   [`web/react`](../react), que devolve só o ref. As duas formas montam igual.
 
-## O que não faz
+## Limitações
 
 `autenticar()` e `db` são stubs. Não há endpoint de webhook — veja
 [`pocs/webhook-receiver`](../../pocs/webhook-receiver).

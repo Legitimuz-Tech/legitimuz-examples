@@ -17,7 +17,7 @@ index.html        # o container com altura, a tag do CDN e o seu script
 verificacao.js    # o mount() e os cinco callbacks
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -29,7 +29,7 @@ verificacao.js    # o mount() e os cinco callbacks
 Nenhuma. Sem bundler não há injeção, então a `sdkUrl` é uma constante no topo de `verificacao.js`.
 No seu projeto ela vem do backend em tempo de execução.
 
-## O que morde
+## Pontos de atenção
 
 - **O container precisa de altura.** O iframe ocupa 100% da altura dele. Sem `height`, o widget
   monta e não aparece.
@@ -37,7 +37,7 @@ No seu projeto ela vem do backend em tempo de execução.
 - **A câmera é bloqueada em `file://`.** Sirva por HTTP.
 - **`handle.destroy()`** encerra o iframe e a stream de câmera.
 
-## O que não faz
+## Limitações
 
 Não emite a `sdkUrl` — ela nasce no seu backend. Não trata o desfecho: `onComplete` diz que o
 titular terminou de interagir, não que foi aprovado. Sem build e sem teste.

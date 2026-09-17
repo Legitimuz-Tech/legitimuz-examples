@@ -23,7 +23,7 @@ database/migrations/..._create_entregas_table.php  # o índice único que faz a 
 .env.example                                     # as três variáveis
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -41,7 +41,7 @@ LEGITIMUZ_WEBHOOK_SECRET=<SEGREDO_DO_ENDPOINT>
 LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 ```
 
-## O que morde
+## Pontos de atenção
 
 - **Esquecer o `withoutMiddleware` é o erro mais comum aqui.** O webhook responde `419` e o
   dashboard mostra a entrega falhando sem explicação óbvia no seu log.
@@ -50,7 +50,7 @@ LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
   passariam pela checagem em separado.
 - **`hash_equals`**, não `===`: comparação em tempo constante.
 
-## O que não faz
+## Limitações
 
 `ProcessarDesfecho` é um job vazio. Sem tratamento de `429` — veja
 [limites](https://documentacao.legitimuz.com/api/errors#limites-de-uso). O `VerificacaoController`

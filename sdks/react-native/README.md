@@ -22,7 +22,7 @@ app.json                                  # as mesmas, no formato Expo
 src/AbrirVerificacao.tsx                  # entrega por link, sem biblioteca
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -38,7 +38,7 @@ Nenhuma no app. O `embedUrl` vem do seu backend em tempo de execução.
 A chave de API **não** vai para o `.env` do React Native: tudo que está lá acaba no bundle, e o
 bundle é legível.
 
-## O que morde
+## Pontos de atenção
 
 - **`@legitimuz/react-native-sdk` nunca foi publicado.** Se você encontrou esse import numa
   documentação antiga, ele não existe.
@@ -46,7 +46,7 @@ bundle é legível.
 - **As permissões são necessárias em qualquer caminho que abra o fluxo dentro do app.** Pela
   entrega por link, quem pede é o navegador.
 
-## O que não faz
+## Limitações
 
 Não traz uma ponte nativa pronta. Não usa `react-native-webview`: as SDKs nativas existem
 justamente porque uma WebView crua precisa de configuração específica para liberar câmera e

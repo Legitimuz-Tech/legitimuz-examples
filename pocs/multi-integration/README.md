@@ -21,7 +21,7 @@ app/api/webhooks/[canal]/route.ts # um endpoint por canal
 .env.example                      # as variáveis com sufixo por canal
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -44,7 +44,7 @@ LEGITIMUZ_FLOW_ID_APP=<FLOW_PUBLIC_ID>
 LEGITIMUZ_WEBHOOK_SECRET_APP=<SEGREDO_DO_ENDPOINT>
 ```
 
-## O que morde
+## Pontos de atenção
 
 - **Nunca deixe o cliente escolher o canal pelo corpo da requisição.** Quem manda o canal manda a
   chave usada, e com isso escolhe em qual conta a verificação nasce.
@@ -55,7 +55,7 @@ LEGITIMUZ_WEBHOOK_SECRET_APP=<SEGREDO_DO_ENDPOINT>
 - **As três credenciais andam juntas.** Trocar a chave sem trocar o segredo do webhook é o erro que
   só aparece na primeira entrega.
 
-## O que não faz
+## Limitações
 
 Canais fixos em código — com muitos canais, isso vira tabela e cache. Sem rotação de chave por
 canal sem downtime. Sem métrica separada por canal.

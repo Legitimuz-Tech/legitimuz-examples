@@ -30,7 +30,7 @@ package.json                            # referência de dependência, sem lockf
 .env.example                            # as três variáveis + as credenciais da Meta
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -58,7 +58,7 @@ WHATSAPP_PHONE_ID=<ID_DO_NUMERO>
 WHATSAPP_TOKEN=<TOKEN_DA_APP>
 ```
 
-## O que morde
+## Pontos de atenção
 
 - **Não devolva a `entry.url` em JSON para o front redirecionar.** Isso coloca a credencial no
   histórico de rede do navegador e em qualquer extensão instalada. O redirecionamento é do servidor,
@@ -78,7 +78,7 @@ WHATSAPP_TOKEN=<TOKEN_DA_APP>
 | Nunca em grupo ou lista de transmissão | a jornada é de uma pessoa; grupo entrega a credencial a todas |
 | Um envio por verificação, com limite de reenvio | reenvio sem teto vira vetor de assédio e custo |
 
-## O que não faz
+## Limitações
 
 Sem webhook de status do WhatsApp: você não sabe se a mensagem foi lida. Sem fallback para SMS. Sem
 rate limit por cadastro no reenvio. Sem migration para a tabela `links`.

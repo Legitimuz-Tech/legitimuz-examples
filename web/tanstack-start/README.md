@@ -24,7 +24,7 @@ package.json                      # referência de dependência, sem lockfile
 .env.example                      # a chave e o fluxo, só no servidor
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -43,13 +43,13 @@ LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 
 Sem prefixo público. A server function roda só no servidor.
 
-## O que morde
+## Pontos de atenção
 
 - **O script vai no `head` da rota raiz**, via `createRootRoute({ head })`, não num `index.html`.
 - **A server function devolve só a `sdkUrl`.** O que ela retorna atravessa para o cliente.
 - **A dependência do efeito é `[options.sdkUrl]`.**
 
-## O que não faz
+## Limitações
 
 `autenticar()` e `db` são stubs. Não há endpoint de webhook — veja
 [`pocs/webhook-receiver`](../../pocs/webhook-receiver).

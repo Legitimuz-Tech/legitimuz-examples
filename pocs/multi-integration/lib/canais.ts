@@ -21,7 +21,7 @@ export const CANAIS: Record<string, Canal> = {
 
 export function canalDe(nome: string): Canal {
   const canal = CANAIS[nome];
-  // Falha cedo e alto: canal desconhecido com fallback silencioso cria verificação na conta errada.
+  // Falha de forma explícita: canal desconhecido com fallback silencioso cria verificação na conta errada.
   if (!canal) throw new Error(`canal desconhecido: ${nome}`);
 
   return canal;

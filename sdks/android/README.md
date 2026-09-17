@@ -21,7 +21,7 @@ app/src/main/AndroidManifest.xml                       # configChanges e screenO
 app/src/main/java/com/exemplo/verificacao/VerificationActivity.java
 ```
 
-## Onde cada um entra
+## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ URL do repositório Maven e as credenciais de leitura, ou o `.aar` da versão qu
 Guarde as credenciais em `~/.gradle/gradle.properties` ou numa variável de ambiente do CI, nunca no
 repositório.
 
-## O que morde
+## Pontos de atenção
 
 - **A Activity hospedeira tem que ser uma `ComponentActivity`.** Uma `AppCompatActivity` já é. A
   SDK pede as permissões pelo `ActivityResultRegistry` dela; sem isso os diálogos do sistema não
@@ -52,7 +52,7 @@ repositório.
 - **`LOAD_FAILED` normalmente não se trata:** a própria view mostra a tela de tentar de novo, e
   `onOutcome` pode disparar mais de uma vez por causa disso.
 
-## O que não faz
+## Limitações
 
 Não cria a verificação — veja [`pocs/express-backend`](../../pocs/express-backend) ou qualquer
 outro backend. Não traz `build.gradle` de projeto, `gradle-wrapper` nem recursos de layout.

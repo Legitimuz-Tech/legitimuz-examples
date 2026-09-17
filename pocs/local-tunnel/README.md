@@ -55,7 +55,7 @@ LEGITIMUZ_WEBHOOK_SECRET=<SEGREDO_DO_ENDPOINT>
 LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 ```
 
-## O que morde
+## Pontos de atenção
 
 - **O endereço do túnel muda a cada reinício** na maioria das ferramentas. Quando parar de chegar
   entrega, confira primeiro se o endpoint cadastrado ainda aponta para o túnel de agora.
@@ -75,7 +75,7 @@ LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 A aba **Webhooks** da integração mostra cada tentativa com o código que o seu servidor devolveu. É
 o primeiro lugar a olhar, antes do seu log.
 
-## O que não faz
+## Limitações
 
 Túnel gratuito costuma ter teto de requisição e latência alta. Sem endereço fixo: cada reinício
 pede recadastro do endpoint. Não substitui um ambiente de homologação de verdade.
