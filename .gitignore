@@ -1,0 +1,29 @@
+# Segredo. Nenhum .env entra aqui: os exemplos trazem só .env.example.
+.env
+.env.*
+!.env.example
+
+# Dependência e build. Este repo é referência de leitura, não projeto compilado.
+node_modules/
+dist/
+build/
+.next/
+out/
+__pycache__/
+vendor/
+*.log
+
+# Lockfile. Fixar versão aqui envelhece o exemplo sem avisar ninguém.
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Mobile
+local.properties
+*.xcframework
+*.aar
+.gradle/
+xcuserdata/
+
+# Sistema
+.DS_Store
