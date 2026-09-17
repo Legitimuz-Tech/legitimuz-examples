@@ -13,17 +13,46 @@ ou página sem exemplo, é defeito: corrija dos dois lados.
 `src/App.tsx`, `app/api/verificacoes/route.ts`, `server.ts`. Não invente uma pasta `exemplo/` nem
 achate tudo na raiz: o caminho é metade da informação que o exemplo entrega.
 
-## 3. O `README.md` tem sempre as mesmas seções, nesta ordem
+## 3. O `README.md` tem sempre a mesma forma
 
-1. `#` com o mesmo título da página da doc.
-2. A citação de aviso: referência de implementação, não projeto executável.
-3. **Página da doc** — o link.
-4. **Stack** — copiada da página.
-5. **Árvore de arquivos** — com um comentário de uma linha por arquivo.
-6. **Onde cada arquivo entra** — tabela arquivo → destino → por quê.
-7. **Variáveis de ambiente** — quando houver.
-8. **O que este exemplo não faz** — os limites, explícitos.
-9. **Referência** — links para a doc.
+```markdown
+# <título igual ao da página da doc>
+
+![badge de stack] ![badge de stack] ![badge de stack]
+
+> Referência de implementação, não projeto executável.
+
+[**Guia completo na doc →**](https://documentacao.legitimuz.com/<caminho>)
+
+<uma ou duas frases: a armadilha que este exemplo resolve>
+
+## Arquivos              <- a árvore, com um comentário por arquivo
+## Onde cada um entra    <- tabela arquivo → destino → por quê
+## Variáveis             <- quando houver
+## O que morde           <- o que não é óbvio e gera chamado
+## O que não faz         <- os limites, explícitos
+## Referência            <- links da doc, separados por ·
+```
+
+Sem seção de "Estado" e sem data escrita à mão: o índice da raiz mostra o último commit de cada
+diretório por badge, e ele se atualiza sozinho.
+
+### Badges
+
+Stack, no topo do README do exemplo, via shields.io no estilo `flat-square`:
+
+```markdown
+![Express 5](https://img.shields.io/badge/Express_5-000000?logo=express&logoColor=white&style=flat-square)
+```
+
+Ícone e data, na tabela do README da raiz:
+
+```markdown
+| <img src="https://cdn.simpleicons.org/<slug>/<hex>" width="16" /> | [`<caminho>`](<caminho>) | [<Guia>](<url>) | ![](https://img.shields.io/github/last-commit/Legitimuz-Tech/legitimuz-examples?path=<caminho-urlencoded>&label=&style=flat-square&color=lightgrey) |
+```
+
+Para logo de marca preta (`express`, `nextdotjs`, `remix`, `apple`), use `888888` no ícone: a cor
+da marca some no tema escuro do GitHub.
 
 ## 4. Nada de segredo, nada de dado real
 
