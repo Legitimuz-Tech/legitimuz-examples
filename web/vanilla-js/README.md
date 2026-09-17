@@ -24,7 +24,7 @@ verificacao.js    # o mount() e os cinco callbacks
 | `index.html` | a página que hospeda a verificação | o `<script>` do CDN vem **antes** do seu: é ele que registra `window.Legitimuz` |
 | `verificacao.js` | qualquer script carregado depois do CDN | o `mount()` é imperativo e roda uma vez |
 
-## Variáveis
+## Envs
 
 Nenhuma. Sem bundler não há injeção, então a `sdkUrl` é uma constante no topo de `verificacao.js`.
 No seu projeto ela vem do backend em tempo de execução.

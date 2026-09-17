@@ -29,7 +29,7 @@ package.json       # referência de dependência, sem lockfile
 | `assinatura.ts` | uma pasta de utilitários | a conferência é a mesma em qualquer framework Node |
 | `stubs.ts` | **não vai** | é o contrato do que o seu código precisa oferecer |
 
-## Variáveis
+## Envs
 
 ```bash
 LEGITIMUZ_API_KEY=<SUA_CHAVE>

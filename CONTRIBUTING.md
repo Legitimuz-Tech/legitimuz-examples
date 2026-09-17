@@ -28,14 +28,14 @@ achate tudo na raiz: o caminho é metade da informação que o exemplo entrega.
 
 ## Arquivos              <- a árvore, com um comentário por arquivo
 ## Onde cada um entra    <- tabela arquivo → destino → por quê
-## Variáveis             <- quando houver
+## Envs                  <- quando houver
 ## O que morde           <- o que não é óbvio e gera chamado
 ## O que não faz         <- os limites, explícitos
 ## Referência            <- links da doc, separados por ·
 ```
 
-Sem seção de "Estado" e sem data escrita à mão: o índice da raiz mostra o último commit de cada
-diretório por badge, e ele se atualiza sozinho.
+Sem seção de "Estado" e sem data: o índice da raiz lista o que existe, e o histórico do git já
+responde quando cada coisa mudou.
 
 ### Badges
 
@@ -45,10 +45,10 @@ Stack, no topo do README do exemplo, via shields.io no estilo `flat-square`:
 ![Express 5](https://img.shields.io/badge/Express_5-000000?logo=express&logoColor=white&style=flat-square)
 ```
 
-Ícone e data, na tabela do README da raiz:
+Ícone, na tabela do README da raiz:
 
 ```markdown
-| <img src="https://cdn.simpleicons.org/<slug>/<hex>" width="16" /> | [`<caminho>`](<caminho>) | [<Guia>](<url>) | ![](https://img.shields.io/github/last-commit/Legitimuz-Tech/legitimuz-examples?path=<caminho-urlencoded>&label=&style=flat-square&color=lightgrey) |
+| <img src="https://cdn.simpleicons.org/<slug>/<hex>" width="16" /> | [`<caminho>`](<caminho>) | [<Guia>](<url>) |
 ```
 
 Logo de marca preta (`express`, `nextdotjs`, `remix`, `apple`) some no tema escuro do GitHub. Use

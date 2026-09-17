@@ -37,7 +37,7 @@ src/
 | `src/VerificationWidget.tsx` | junto dos seus componentes | isola a altura obrigatória do container |
 | `src/App.tsx` | a tela que abre a verificação | mostra os cinco callbacks ligados |
 
-## Variáveis
+## Envs
 
 ```bash
 VITE_LEGITIMUZ_SDK_URL=<SUA_SDK_URL>
