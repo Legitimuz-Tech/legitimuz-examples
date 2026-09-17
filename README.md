@@ -26,7 +26,7 @@ Duas rotas, os mesmos nomes em toda linguagem: `POST /api/verificacoes` e
 
 | | Exemplo | Guia | Atualizado |
 | :-: | --- | --- | --- |
-| <img src="https://cdn.simpleicons.org/express/333333/dddddd" width="16" /> | [`pocs/express-backend`](pocs/express-backend) | [Backend Express](https://documentacao.legitimuz.com/guides/pocs/express-backend) | ![](https://img.shields.io/github/last-commit/Legitimuz-Tech/legitimuz-examples?path=pocs%2Fexpress-backend&label=&style=flat-square&color=lightgrey) |
+| <img src="https://cdn.simpleicons.org/express/888888" width="16" /> | [`pocs/express-backend`](pocs/express-backend) | [Backend Express](https://documentacao.legitimuz.com/guides/pocs/express-backend) | ![](https://img.shields.io/github/last-commit/Legitimuz-Tech/legitimuz-examples?path=pocs%2Fexpress-backend&label=&style=flat-square&color=lightgrey) |
 
 Em breve: `next-checkout`, `fastapi-backend`, `laravel-backend`, `go-backend`,
 `webhook-receiver`, `queue-worker`, `multi-integration`, `qr-handoff`, `whatsapp-handoff`,

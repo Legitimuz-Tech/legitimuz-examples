@@ -51,12 +51,13 @@ Stack, no topo do README do exemplo, via shields.io no estilo `flat-square`:
 | <img src="https://cdn.simpleicons.org/<slug>/<hex>" width="16" /> | [`<caminho>`](<caminho>) | [<Guia>](<url>) | ![](https://img.shields.io/github/last-commit/Legitimuz-Tech/legitimuz-examples?path=<caminho-urlencoded>&label=&style=flat-square&color=lightgrey) |
 ```
 
-Logo de marca preta (`express`, `nextdotjs`, `remix`, `apple`) some no tema escuro do GitHub. O
-simple-icons aceita uma cor por tema — passe as duas, clara e escura:
+Logo de marca preta (`express`, `nextdotjs`, `remix`, `apple`) some no tema escuro do GitHub. Use
+`888888`, que lê nos dois temas.
 
-```
-https://cdn.simpleicons.org/express/333333/dddddd
-```
+Não use a forma de duas cores do simple-icons (`/<claro>/<escuro>`). Ela embute um
+`prefers-color-scheme` no SVG, e um SVG carregado por `<img>` segue a preferência do **sistema
+operacional**, não o tema escolhido no GitHub — com SO claro e GitHub escuro, o ícone renderiza a
+cor clara em fundo quase preto e desaparece.
 
 ## 4. Nada de segredo, nada de dado real
 
