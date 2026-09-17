@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+      As permissões de INTERNET, CAMERA, RECORD_AUDIO, ACCESS_FINE_LOCATION e
+      ACCESS_COARSE_LOCATION já são declaradas pelo manifest da SDK. O merge as traz
+      para o seu app e você NÃO precisa repeti-las aqui.
+
+      O que o seu app precisa declarar são os dois atributos abaixo:
+
+      - configChanges: sem ele, uma rotação recria a Activity e derruba a verificação
+        em andamento.
+      - screenOrientation: a prova de vida aborta ao girar e recusa paisagem. A SDK é
+        uma View e não trava a orientação do host por conta própria.
+    -->
+    <application>
+        <activity
+            android:name=".verificacao.VerificationActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|uiMode"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+    </application>
+
+</manifest>

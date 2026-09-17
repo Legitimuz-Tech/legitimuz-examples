@@ -1,0 +1,25 @@
+android {
+    compileSdk 35
+
+    defaultConfig {
+        minSdk 24
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+    // Via Maven: androidx.webkit, androidx.browser e androidx.appcompat vêm por transitividade.
+    implementation 'com.legitimuz:sdk:1.1.0'
+
+    // Alternativa com o .aar fechado. Neste modo as três transitivas são OBRIGATÓRIAS:
+    // sem elas o app compila e quebra em runtime com NoClassDefFoundError.
+    //
+    // implementation files('libs/legitimuz-sdk-1.1.0.aar')
+    // implementation 'androidx.webkit:webkit:1.14.0'
+    // implementation 'androidx.browser:browser:1.8.0'
+    // implementation 'androidx.appcompat:appcompat:1.8.0'
+}

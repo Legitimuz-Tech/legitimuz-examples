@@ -46,8 +46,14 @@ Duas rotas, os mesmos nomes em toda linguagem: `POST /api/verificacoes` e
 
 ## Mobile
 
-Em breve: `android`, `ios`, `react-native`. Os artefatos são privados e liberados sob solicitação —
-veja [`sdks/`](sdks).
+A entrada é o embed URL. Os artefatos são privados e liberados sob solicitação — veja
+[`sdks/`](sdks).
+
+| | Exemplo | Guia |
+| :-: | --- | --- |
+| <img src="https://cdn.simpleicons.org/android/3ddc84" width="16" /> | [`sdks/android`](sdks/android) | [Android](https://documentacao.legitimuz.com/sdks/android) |
+| <img src="https://cdn.simpleicons.org/apple/888888" width="16" /> | [`sdks/ios`](sdks/ios) | [iOS](https://documentacao.legitimuz.com/sdks/ios) |
+| <img src="https://cdn.simpleicons.org/react/61dafb" width="16" /> | [`sdks/react-native`](sdks/react-native) | [React Native](https://documentacao.legitimuz.com/sdks/react-native) |
 
 ## Como ler
 

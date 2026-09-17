@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+<dict>
+    <key>NSCameraUsageDescription</key>
+    <string>Usamos a câmera para capturar o seu documento e a sua selfie na verificação.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Usamos o microfone durante a prova de vida.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Usamos a sua localização para checar a origem da verificação.</string>
+</dict>
+</plist>

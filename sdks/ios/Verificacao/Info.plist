@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  As três chaves são obrigatórias para qualquer verificação com prova de vida ou captura de
+  documento. Sem elas o processo é encerrado pelo sistema quando o widget tenta o hardware.
+
+  Se o seu target usa GENERATE_INFOPLIST_FILE = YES e não tem Info.plist físico, declare as
+  mesmas chaves como build settings com o prefixo INFOPLIST_KEY_.
+-->
+<plist version="1.0">
+<dict>
+    <key>NSCameraUsageDescription</key>
+    <string>Usamos a câmera para capturar o seu documento e a sua selfie na verificação.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Usamos o microfone durante a prova de vida.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Usamos a sua localização para checar a origem da verificação.</string>
+</dict>
+</plist>

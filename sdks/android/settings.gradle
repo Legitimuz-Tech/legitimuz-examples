@@ -1,0 +1,17 @@
+// Acrescente o bloco maven ao dependencyResolutionManagement do seu settings.gradle.
+// A URL e as credenciais são liberadas pelo time da Legitimuz.
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url = '<URL_DO_REPOSITORIO>'
+            credentials {
+                // Guarde fora do controle de versão: ~/.gradle/gradle.properties ou env do CI.
+                username = providers.gradleProperty('legitimuz.user').getOrElse(System.getenv('LEGITIMUZ_MAVEN_USER') ?: '')
+                password = providers.gradleProperty('legitimuz.key').getOrElse(System.getenv('LEGITIMUZ_MAVEN_TOKEN') ?: '')
+            }
+        }
+    }
+}
