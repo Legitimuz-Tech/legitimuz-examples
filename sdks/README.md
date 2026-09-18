@@ -10,7 +10,6 @@ programa é a da SDK, não a de uma WebView.
 | --- | --- |
 | Android | Maven privado (`com.legitimuz:sdk`) ou `.aar` fechado |
 | iOS | `.xcframework` fechado, sem SPM e sem CocoaPods |
-| React Native | não há SDK publicada |
 
 Peça o acesso ao [suporte](https://painel.legitimuz.com/support). Os exemplos aqui são referência
 de leitura: eles mostram os arquivos e as chamadas, e não compilam sem o artefato.
