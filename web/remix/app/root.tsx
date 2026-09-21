@@ -7,7 +7,7 @@ export default function Root() {
         <Meta />
         <Links />
         {/* Antes dos scripts do app: registra window.Legitimuz. */}
-        <script src="https://sdk.legitimuz.com/v1/websdk.js" />
+        <script src="https://sdk.legitimuz.com/v1/websdk.iife.js" />
       </head>
       <body>
         <Outlet />

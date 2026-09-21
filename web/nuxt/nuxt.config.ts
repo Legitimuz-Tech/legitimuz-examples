@@ -2,7 +2,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       // Entra no <head> de todas as páginas e registra window.Legitimuz antes do bundle.
-      script: [{ src: "https://sdk.legitimuz.com/v1/websdk.js" }],
+      script: [{ src: "https://sdk.legitimuz.com/v1/websdk.iife.js" }],
     },
   },
   runtimeConfig: {

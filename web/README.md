@@ -8,7 +8,7 @@ Nove exemplos, o mesmo widget. O que muda de um para outro é onde o script entr
 O SDK é carregado por CDN e registra `window.Legitimuz`. **Não há pacote npm para instalar.**
 
 ```html
-<script src="https://sdk.legitimuz.com/v1/websdk.js"></script>
+<script src="https://sdk.legitimuz.com/v1/websdk.iife.js"></script>
 ```
 
 A URL `v1` é evergreen: serve sempre a última versão sem breaking change.

@@ -3,7 +3,7 @@ import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-r
 export const Route = createRootRoute({
   head: () => ({
     // Registra window.Legitimuz antes do bundle.
-    scripts: [{ src: "https://sdk.legitimuz.com/v1/websdk.js" }],
+    scripts: [{ src: "https://sdk.legitimuz.com/v1/websdk.iife.js" }],
   }),
   component: () => (
     <html>
