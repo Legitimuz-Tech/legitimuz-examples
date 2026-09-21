@@ -18,7 +18,7 @@ A SDK renderiza o fluxo dentro do seu app a partir do **embed URL** que o seu ba
 settings.gradle                                        # o repositório Maven privado
 app/build.gradle                                       # a dependência, minSdk e Java 11
 app/src/main/AndroidManifest.xml                       # configChanges e screenOrientation
-app/src/main/java/com/exemplo/verificacao/VerificationActivity.java
+app/src/main/java/com/example/verification/VerificationActivity.java
 ```
 
 ## Onde cada arquivo entra

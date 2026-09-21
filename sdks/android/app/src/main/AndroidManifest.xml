@@ -15,7 +15,7 @@
     -->
     <application>
         <activity
-            android:name=".verificacao.VerificationActivity"
+            android:name=".verification.VerificationActivity"
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|uiMode"
             android:exported="true"
             android:screenOrientation="portrait" />

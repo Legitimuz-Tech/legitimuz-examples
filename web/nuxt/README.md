@@ -14,14 +14,14 @@ de servidor que emite a credencial. No Nuxt as duas moram no mesmo projeto.
 ## Arquivos
 
 ```
-nuxt.config.ts                  # o script no head e o runtimeConfig
-package.json                    # referência de dependência, sem lockfile
-.env.example                    # a chave e o fluxo, só no servidor
-types/legitimuz.d.ts            # os tipos do global
-composables/useLegitimuz.ts     # mount no onMounted, destroy no onUnmounted
-server/api/verificacoes.post.ts # emite a credencial e devolve só a entry
-server/utils/stubs.ts           # autenticar() e db — substitua
-pages/verificacao.vue           # o container dentro de <ClientOnly>
+nuxt.config.ts                   # o script no head e o runtimeConfig
+package.json                     # referência de dependência, sem lockfile
+.env.example                     # a chave e o fluxo, só no servidor
+types/legitimuz.d.ts             # os tipos do global
+composables/useLegitimuz.ts      # mount no onMounted, destroy no onUnmounted
+server/api/verifications.post.ts # emite a credencial e devolve só a entry
+server/utils/stubs.ts            # authenticate() e db — substitua
+pages/verification.vue           # o container dentro de <ClientOnly>
 ```
 
 ## Onde cada arquivo entra
@@ -30,8 +30,8 @@ pages/verificacao.vue           # o container dentro de <ClientOnly>
 | --- | --- | --- |
 | `nuxt.config.ts` | o seu `nuxt.config.ts` | o script vai no `head`, o segredo no `runtimeConfig` |
 | `composables/useLegitimuz.ts` | `composables/` | o auto-import do Nuxt o expõe sem `import` |
-| `server/api/verificacoes.post.ts` | `server/api/` | a chave só existe aqui |
-| `pages/verificacao.vue` | a rota que abre a verificação | o `<ClientOnly>` em volta do container |
+| `server/api/verifications.post.ts` | `server/api/` | a chave só existe aqui |
+| `pages/verification.vue` | a rota que abre a verificação | o `<ClientOnly>` em volta do container |
 | `types/legitimuz.d.ts` | `types/` | o build de CDN não traz tipos |
 | `server/utils/stubs.ts` | **não vai** | é o contrato do que o seu código precisa oferecer |
 
@@ -55,7 +55,7 @@ O Nuxt mapeia `runtimeConfig.legitimuzApiKey` para `NUXT_LEGITIMUZ_API_KEY`. **S
 
 ## Limitações
 
-`autenticar()` e `db` são stubs. Não há endpoint de webhook aqui — veja
+`authenticate()` e `db` são stubs. Não há endpoint de webhook aqui — veja
 [`pocs/webhook-receiver`](../../pocs/webhook-receiver).
 
 ## Referência

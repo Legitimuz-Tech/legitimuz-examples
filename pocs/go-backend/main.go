@@ -6,8 +6,8 @@ import (
 )
 
 func main() {
-	http.HandleFunc("POST /api/verificacoes", criarVerificacao)
-	http.HandleFunc("POST /api/webhooks/legitimuz", receberWebhook)
+	http.HandleFunc("POST /api/verifications", createVerification)
+	http.HandleFunc("POST /api/webhooks/legitimuz", receiveWebhook)
 
 	log.Fatal(http.ListenAndServe(":3000", nil))
 }

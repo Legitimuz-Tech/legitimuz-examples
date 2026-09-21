@@ -22,10 +22,10 @@ sufixo é variável.
 ## Arquivos
 
 ```
-app/api/verificacoes/whatsapp/route.ts  # cria a verificação, guarda a url, despacha o token
+app/api/verifications/whatsapp/route.ts # cria a verificação, guarda a url, despacha o token
 app/v/[token]/route.ts                  # troca o token pela entry.url, com 302
 lib/whatsapp.ts                         # o envio do template pela Cloud API
-lib/stubs.ts                            # autenticar(), db.cadastros e db.links — substitua
+lib/stubs.ts                            # authenticate(), db.registrations e db.links — substitua
 package.json                            # referência de dependência, sem lockfile
 .env.example                            # as três variáveis + as credenciais da Meta
 ```
@@ -34,7 +34,7 @@ package.json                            # referência de dependência, sem lockf
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
-| `app/api/verificacoes/whatsapp/route.ts` | a sua rota de despacho | a `entry.url` para no banco, não na mensagem |
+| `app/api/verifications/whatsapp/route.ts` | a sua rota de despacho | a `entry.url` para no banco, não na mensagem |
 | `app/v/[token]/route.ts` | uma rota pública curta | o redirecionamento é do servidor |
 | `lib/whatsapp.ts` | junto das suas integrações | o formato do template com botão de URL |
 | `lib/stubs.ts` | **não vai** | mostra as colunas que a tabela `links` precisa |
@@ -42,7 +42,7 @@ package.json                            # referência de dependência, sem lockf
 ## O template na Meta
 
 ```text
-Nome:   verificacao_identidade
+Nome:   identity_verification
 Corpo:  Olá, {{1}}! Para concluir seu cadastro, confirme sua identidade. O link vale por 24 horas
         e é só para você.
 Botão:  URL dinâmica — https://seu-dominio/v/{{1}}
@@ -63,7 +63,7 @@ WHATSAPP_TOKEN=<TOKEN_DA_APP>
 - **Não devolva a `entry.url` em JSON para o front redirecionar.** Isso coloca a credencial no
   histórico de rede do navegador e em qualquer extensão instalada. O redirecionamento é do servidor,
   com `302` e `Cache-Control: no-store`.
-- **`consumir` é um `UPDATE` condicional**, não `SELECT` seguido de `UPDATE`. Dois cliques
+- **`consume` é um `UPDATE` condicional**, não `SELECT` seguido de `UPDATE`. Dois cliques
   simultâneos no mesmo link não podem resolver os dois. A tabela `links` precisa de índice único em
   `token`.
 - **O telefone vem do cadastro**, nunca do corpo da requisição.

@@ -12,20 +12,20 @@ A integração sem framework: `net/http` e `crypto/hmac` dão conta das duas pon
 ## Arquivos
 
 ```
-main.go           # registra as duas rotas
-verificacao.go    # POST /api/verificacoes
-webhook.go        # POST /api/webhooks/legitimuz, com a assinatura conferida
-stubs.go          # autenticar(), db e fila — substitua tudo
-go.mod            # sem dependência externa
-.env.example      # as três variáveis
+main.go         # registra as duas rotas
+verification.go # POST /api/verifications
+webhook.go      # POST /api/webhooks/legitimuz, com a assinatura conferida
+stubs.go        # authenticate(), db e queue — substitua tudo
+go.mod          # sem dependência externa
+.env.example    # as três variáveis
 ```
 
 ## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
-| `verificacao.go` | junto dos seus handlers | a chamada de criação e o struct de resposta |
-| `webhook.go` | junto dos seus handlers | `assinaturaValida` serve para qualquer roteador |
+| `verification.go` | junto dos seus handlers | a chamada de criação e o struct de resposta |
+| `webhook.go` | junto dos seus handlers | `isSignatureValid` serve para qualquer roteador |
 | `main.go` | o seu `main` | mostra os dois padrões de rota do `net/http` 1.22+ |
 | `stubs.go` | **não vai** | é o contrato do que o seu código precisa oferecer |
 
@@ -49,7 +49,7 @@ LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 
 ## Limitações
 
-`db` e `fila` são stubs de pacote. Sem `context` de cancelamento no worker e sem
+`db` e `queue` são stubs de pacote. Sem `context` de cancelamento no worker e sem
 retry na criação — o catálogo de quando repetir está em
 [erros](https://documentacao.legitimuz.com/api/errors).
 

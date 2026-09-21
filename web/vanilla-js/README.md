@@ -13,8 +13,8 @@ A integração mínima. Se o widget funciona aqui, funciona em qualquer lugar on
 ## Arquivos
 
 ```
-index.html        # o container com altura, a tag do CDN e o seu script
-verificacao.js    # o mount() e os cinco callbacks
+index.html      # o container com altura, a tag do CDN e o seu script
+verification.js # o mount() e os cinco callbacks
 ```
 
 ## Onde cada arquivo entra
@@ -22,11 +22,11 @@ verificacao.js    # o mount() e os cinco callbacks
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
 | `index.html` | a página que hospeda a verificação | o `<script>` do CDN vem **antes** do seu: é ele que registra `window.Legitimuz` |
-| `verificacao.js` | qualquer script carregado depois do CDN | o `mount()` é imperativo e roda uma vez |
+| `verification.js` | qualquer script carregado depois do CDN | o `mount()` é imperativo e roda uma vez |
 
 ## Envs
 
-Nenhuma. Sem bundler não há injeção, então a `sdkUrl` é uma constante no topo de `verificacao.js`.
+Nenhuma. Sem bundler não há injeção, então a `sdkUrl` é uma constante no topo de `verification.js`.
 No seu projeto ela vem do backend em tempo de execução.
 
 ## Pontos de atenção

@@ -10,10 +10,10 @@ import type { WebSdkCompleteResult, WebSdkError, WebSdkEvent } from "./legitimuz
   template: `
     <app-verification-widget
       [sdkUrl]="sdkUrl"
-      (ready)="status = 'pronto'"
+      (ready)="status = 'ready'"
       (event)="onEvent($event)"
       (complete)="onComplete($event)"
-      (cancel)="status = 'cancelado'"
+      (cancel)="status = 'cancelled'"
       (error)="onError($event)"
     ></app-verification-widget>
 
@@ -27,7 +27,7 @@ import type { WebSdkCompleteResult, WebSdkError, WebSdkEvent } from "./legitimuz
 })
 export class AppComponent {
   sdkUrl = environment.sdkUrl;
-  status = "montando";
+  status = "mounting";
   log: string[] = [];
 
   onEvent(e: WebSdkEvent) {
@@ -36,11 +36,11 @@ export class AppComponent {
 
   // "o fluxo terminou", não "deu certo": status é "submitted" ou "abandoned"
   onComplete(r: WebSdkCompleteResult) {
-    this.status = `fim: ${r.status}`;
+    this.status = `done: ${r.status}`;
   }
 
   onError(e: WebSdkError) {
-    this.status = `erro ${e.code}`;
+    this.status = `error ${e.code}`;
     this.log.push(e.user_message);
   }
 }

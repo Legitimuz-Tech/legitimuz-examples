@@ -14,12 +14,12 @@ acontece depois, num worker com a retentativa que ele entende.
 ## Arquivos
 
 ```
-app/api/webhooks/legitimuz/route.ts  # confere e enfileira, nada mais
-workers/desfecho.ts                  # o worker, com retentativa própria
-lib/filas.ts                         # a Queue do BullMQ
-lib/stubs.ts                         # db — substitua
-package.json                         # referência de dependência, sem lockfile
-.env.example                         # as três variáveis + REDIS_HOST
+app/api/webhooks/legitimuz/route.ts # confere e enfileira, nada mais
+workers/outcome.ts                  # o worker, com retentativa própria
+lib/queues.ts                       # a Queue do BullMQ
+lib/stubs.ts                        # db — substitua
+package.json                        # referência de dependência, sem lockfile
+.env.example                        # as três variáveis + REDIS_HOST
 ```
 
 ## Onde cada arquivo entra
@@ -27,8 +27,8 @@ package.json                         # referência de dependência, sem lockfile
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
 | `app/api/webhooks/legitimuz/route.ts` | a sua rota de webhook | mostra o `jobId` como idempotência |
-| `workers/desfecho.ts` | o seu processo de worker | roda fora do servidor HTTP |
-| `lib/filas.ts` | junto da sua infra de fila | a conexão, num lugar só |
+| `workers/outcome.ts` | o seu processo de worker | roda fora do servidor HTTP |
+| `lib/queues.ts` | junto da sua infra de fila | a conexão, num lugar só |
 
 ## Envs
 

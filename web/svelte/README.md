@@ -14,12 +14,12 @@ lá quando o componente monta; a `sdkUrl` vem do `load` do servidor, e a chave d
 ## Arquivos
 
 ```
-src/app.html                              # a tag do CDN (index.html em Svelte puro)
-src/lib/legitimuz.d.ts                    # os tipos do global
-src/lib/VerificationWidget.svelte         # mount no onMount, destroy no retorno
-src/routes/verificacao/+page.server.ts    # busca a credencial no servidor
-src/routes/verificacao/+page.svelte       # passa a sdkUrl como prop
-package.json                              # referência de dependência, sem lockfile
+src/app.html                            # a tag do CDN (index.html em Svelte puro)
+src/lib/legitimuz.d.ts                  # os tipos do global
+src/lib/VerificationWidget.svelte       # mount no onMount, destroy no retorno
+src/routes/verification/+page.server.ts # busca a credencial no servidor
+src/routes/verification/+page.svelte    # passa a sdkUrl como prop
+package.json                            # referência de dependência, sem lockfile
 ```
 
 ## Onde cada arquivo entra
@@ -29,7 +29,7 @@ package.json                              # referência de dependência, sem loc
 | `src/app.html` | o `app.html` do SvelteKit | em Svelte puro, o `index.html` |
 | `src/lib/legitimuz.d.ts` | `src/lib/` | o build de CDN não traz tipos |
 | `src/lib/VerificationWidget.svelte` | `src/lib/` | o único arquivo que toca em `window.Legitimuz` |
-| `src/routes/verificacao/+page.server.ts` | a rota que abre a verificação | mantém a credencial fora do bundle |
+| `src/routes/verification/+page.server.ts` | a rota que abre a verificação | mantém a credencial fora do bundle |
 
 ## Envs
 
@@ -46,7 +46,7 @@ API, que este exemplo não traz — veja [`pocs/express-backend`](../../pocs/exp
 
 ## Limitações
 
-Não traz a rota `/api/verificacoes`. Não trata o desfecho: a decisão chega ao seu backend por
+Não traz a rota `/api/verifications`. Não trata o desfecho: a decisão chega ao seu backend por
 webhook.
 
 ## Referência

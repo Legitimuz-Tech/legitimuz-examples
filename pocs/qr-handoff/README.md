@@ -13,21 +13,21 @@ isso sem chamada nova: é a mesma jornada, aberta em outro aparelho.
 ## Arquivos
 
 ```
-app/api/verificacoes/route.ts         # gera o QR a partir da entry.url, no servidor
-app/api/verificacoes/estado/route.ts  # o desktop pergunta ao SEU banco
-app/cadastro/qr.tsx                   # mostra o QR e espera
-lib/stubs.ts                          # autenticar(), db e a criação — substitua
-package.json                          # referência de dependência, sem lockfile
-.env.example                          # as três variáveis
+app/api/verifications/route.ts       # gera o QR a partir da entry.url, no servidor
+app/api/verifications/state/route.ts # o desktop pergunta ao SEU banco
+app/registration/qr.tsx              # mostra o QR e espera
+lib/stubs.ts                         # authenticate(), db e a criação — substitua
+package.json                         # referência de dependência, sem lockfile
+.env.example                         # as três variáveis
 ```
 
 ## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
-| `app/api/verificacoes/route.ts` | a sua rota de criação | o QR nasce no servidor |
-| `app/api/verificacoes/estado/route.ts` | uma rota de leitura | lê o que o seu webhook gravou |
-| `app/cadastro/qr.tsx` | a tela de desktop | o polling e os três estados |
+| `app/api/verifications/route.ts` | a sua rota de criação | o QR nasce no servidor |
+| `app/api/verifications/state/route.ts` | uma rota de leitura | lê o que o seu webhook gravou |
+| `app/registration/qr.tsx` | a tela de desktop | o polling e os três estados |
 
 ## Envs
 

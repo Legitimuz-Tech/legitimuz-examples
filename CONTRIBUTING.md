@@ -10,7 +10,7 @@ ou página sem exemplo, é defeito: corrija dos dois lados.
 
 ## 2. Os arquivos ficam no caminho real do projeto de destino
 
-`src/App.tsx`, `app/api/verificacoes/route.ts`, `server.ts`. Não invente uma pasta `exemplo/` nem
+`src/App.tsx`, `app/api/verifications/route.ts`, `server.ts`. Não invente uma pasta `exemplo/` nem
 achate tudo na raiz: o caminho é metade da informação que o exemplo entrega.
 
 ## 3. O `README.md` tem sempre a mesma forma
@@ -68,7 +68,7 @@ CPF de exemplo usa máscara neutra: `000.000.000-00`.
 
 ## 5. Stub é stub, e fica num arquivo só
 
-`autenticar()`, `db` e `fila` não são implementados aqui. Ficam em `stubs.ts` (ou equivalente),
+`authenticate()`, `db` e `queue` não são implementados aqui. Ficam em `stubs.ts` (ou equivalente),
 marcados com `// Substitua pela sua implementação.` É onde o código do integrador encaixa, e
 deixar isso visível é parte do que o exemplo ensina.
 
@@ -80,7 +80,7 @@ Svelte é **como o `mount()` é chamado**, não o desenho da tela. É isso que t
 
 ## 7. Os backends expõem as mesmas duas rotas
 
-`POST /api/verificacoes` e `POST /api/webhooks/legitimuz`, com os mesmos nomes em todas as
+`POST /api/verifications` e `POST /api/webhooks/legitimuz`, com os mesmos nomes em todas as
 linguagens.
 
 ## 8. `src/legitimuz.d.ts` é idêntico em todos os exemplos web

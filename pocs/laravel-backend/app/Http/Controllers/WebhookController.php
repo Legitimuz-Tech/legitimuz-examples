@@ -2,57 +2,57 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\ProcessarDesfecho;
-use App\Models\Entrega;
+use App\Jobs\ProcessOutcome;
+use App\Models\Delivery;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class WebhookController extends Controller
 {
-    private const TOLERANCIA_SEGUNDOS = 300;
+    private const TOLERANCE_SECONDS = 300;
 
     public function __invoke(Request $request): Response
     {
         // getContent() devolve o corpo ORIGINAL. $request->all() já teria feito o parse.
-        $corpoCru = $request->getContent();
+        $rawBody = $request->getContent();
 
-        if (! $this->assinaturaValida($corpoCru, $request->header('X-Legitimuz-Signature', ''))) {
+        if (! $this->isSignatureValid($rawBody, $request->header('X-Legitimuz-Signature', ''))) {
             return response()->noContent(401);
         }
 
-        $entrega = $request->header('X-Legitimuz-Delivery', '');
+        $deliveryId = $request->header('X-Legitimuz-Delivery', '');
 
         // INSERT com chave única, não SELECT seguido de INSERT: duas entregas simultâneas passariam.
-        $inedita = Entrega::firstOrCreate(['delivery_id' => $entrega])->wasRecentlyCreated;
-        if ($inedita) {
-            ProcessarDesfecho::dispatch(json_decode($corpoCru, true));
+        $isNew = Delivery::firstOrCreate(['delivery_id' => $deliveryId])->wasRecentlyCreated;
+        if ($isNew) {
+            ProcessOutcome::dispatch(json_decode($rawBody, true));
         }
 
         return response()->noContent(200);
     }
 
-    private function assinaturaValida(string $corpoCru, string $header): bool
+    private function isSignatureValid(string $rawBody, string $header): bool
     {
-        $partes = [];
-        foreach (explode(',', $header) as $parte) {
-            [$chave, $valor] = array_pad(explode('=', $parte, 2), 2, null);
-            $partes[$chave] = $valor;
+        $parts = [];
+        foreach (explode(',', $header) as $part) {
+            [$key, $value] = array_pad(explode('=', $part, 2), 2, null);
+            $parts[$key] = $value;
         }
 
-        if (empty($partes['t']) || empty($partes['v1'])) {
+        if (empty($parts['t']) || empty($parts['v1'])) {
             return false;
         }
 
-        if (abs(time() - (int) $partes['t']) > self::TOLERANCIA_SEGUNDOS) {
+        if (abs(time() - (int) $parts['t']) > self::TOLERANCE_SECONDS) {
             return false;
         }
 
-        $esperada = hash_hmac(
+        $expected = hash_hmac(
             'sha256',
-            $partes['t'].'.'.$corpoCru,
+            $parts['t'].'.'.$rawBody,
             config('services.legitimuz.webhook_secret')
         );
 
-        return hash_equals($esperada, $partes['v1']);
+        return hash_equals($expected, $parts['v1']);
     }
 }

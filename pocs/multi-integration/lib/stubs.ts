@@ -1,23 +1,23 @@
 // Substitua tudo aqui pela sua implementação.
 
-export async function autenticar(_request: Request) {
-  return { id: "usuario-1" };
+export async function authenticate(_request: Request) {
+  return { id: "user-1" };
 }
 
 export const db = {
-  cadastros: {
-    async porUsuario(_usuarioId: string) {
-      return { id: "pedido-4471", cpf: "000.000.000-00", canal: "site" };
+  registrations: {
+    async byUser(_userId: string) {
+      return { id: "pedido-4471", cpf: "000.000.000-00", channel: "site" };
     },
-    async vincular(_cadastroId: string, _publicId: string, _canal: string) {},
+    async link(_registrationId: string, _publicId: string, _channel: string) {},
   },
-  entregas: {
-    async registrarSeInedita(_deliveryId: string): Promise<boolean> {
+  deliveries: {
+    async recordIfNew(_deliveryId: string): Promise<boolean> {
       return true;
     },
   },
 };
 
-export const fila = {
-  async publicar(_evento: unknown) {},
+export const queue = {
+  async publish(_event: unknown) {},
 };

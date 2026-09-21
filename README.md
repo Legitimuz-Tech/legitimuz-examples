@@ -26,7 +26,7 @@ Carregado por CDN, registra `window.Legitimuz`. Não há pacote npm.
 
 ## Backend
 
-Duas rotas, os mesmos nomes em toda linguagem: `POST /api/verificacoes` e
+Duas rotas, os mesmos nomes em toda linguagem: `POST /api/verifications` e
 `POST /api/webhooks/legitimuz`.
 
 | | Exemplo | Guia |

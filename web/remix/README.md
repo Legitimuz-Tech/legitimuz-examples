@@ -15,13 +15,13 @@ está no `root.tsx`.
 ## Arquivos
 
 ```
-app/root.tsx                   # a tag do CDN, antes dos scripts do app
-app/routes/verificacao.tsx     # o loader emite a credencial, o componente monta
-app/hooks/useLegitimuz.ts      # mount no efeito, destroy no cleanup
-app/hooks/legitimuz.d.ts       # os tipos do global
-app/lib/stubs.ts               # autenticar() e db — substitua
-package.json                   # referência de dependência, sem lockfile
-.env.example                   # a chave e o fluxo, só no servidor
+app/root.tsx                # a tag do CDN, antes dos scripts do app
+app/routes/verification.tsx # o loader emite a credencial, o componente monta
+app/hooks/useLegitimuz.ts   # mount no efeito, destroy no cleanup
+app/hooks/legitimuz.d.ts    # os tipos do global
+app/lib/stubs.ts            # authenticate() e db — substitua
+package.json                # referência de dependência, sem lockfile
+.env.example                # a chave e o fluxo, só no servidor
 ```
 
 ## Onde cada arquivo entra
@@ -29,7 +29,7 @@ package.json                   # referência de dependência, sem lockfile
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
 | `app/root.tsx` | o seu `root.tsx` | a tag do CDN vai no `<head>` |
-| `app/routes/verificacao.tsx` | a rota que abre a verificação | mostra loader e componente no mesmo arquivo |
+| `app/routes/verification.tsx` | a rota que abre a verificação | mostra loader e componente no mesmo arquivo |
 | `app/hooks/useLegitimuz.ts` | junto dos seus hooks | encapsula o efeito e o `destroy()` |
 | `app/lib/stubs.ts` | **não vai** | é o contrato do que o seu código precisa oferecer |
 
@@ -53,7 +53,7 @@ Sem prefixo público. O `loader` roda só no servidor, então a chave nunca cheg
 
 ## Limitações
 
-`autenticar()` e `db` são stubs. Não há endpoint de webhook — veja
+`authenticate()` e `db` são stubs. Não há endpoint de webhook — veja
 [`pocs/webhook-receiver`](../../pocs/webhook-receiver).
 
 ## Referência

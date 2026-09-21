@@ -13,7 +13,7 @@ O webhook precisa de um endereço público em HTTPS, e a sua máquina não tem u
 ## Arquivos
 
 ```
-criar-verificacao.sh   # cria uma verificação de teste e imprime a entry.url
+create-verification.sh # cria uma verificação de teste e imprime a entry.url
 .env.example           # as três variáveis
 ```
 
@@ -41,7 +41,7 @@ de verdade e percorra a jornada:
 
 ```bash
 export LEGITIMUZ_API_KEY=... LEGITIMUZ_FLOW_ID=...
-./criar-verificacao.sh <CPF_DE_TESTE>
+./create-verification.sh <CPF_DE_TESTE>
 ```
 
 Abra a `entry.url` no navegador e vá até o fim. O seu handler recebe `verification.decided` com o

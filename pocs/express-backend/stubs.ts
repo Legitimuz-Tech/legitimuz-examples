@@ -3,37 +3,37 @@
 
 import type { Request } from "express";
 
-export interface Usuario {
+export interface User {
   id: string;
 }
 
-export interface Cadastro {
+export interface Registration {
   id: string;
   cpf: string;
 }
 
 /** Substitua pela sua autenticação. */
-export async function autenticar(_req: Request): Promise<Usuario | null> {
-  return { id: "usuario-1" };
+export async function authenticate(_req: Request): Promise<User | null> {
+  return { id: "user-1" };
 }
 
 /** Substitua pelo seu banco. */
 export const db = {
-  cadastro: {
-    async porUsuario(_usuarioId: string): Promise<Cadastro> {
+  registration: {
+    async byUser(_userId: string): Promise<Registration> {
       return { id: "pedido-4471", cpf: "000.000.000-00" };
     },
-    async vincular(_cadastroId: string, _verificacaoPublicId: string): Promise<void> {},
+    async link(_registrationId: string, _verificationPublicId: string): Promise<void> {},
   },
-  entregas: {
+  deliveries: {
     /** Deduplica pelo header X-Legitimuz-Delivery. Devolve false se já viu esta entrega. */
-    async registrarSeInedita(_deliveryId: string): Promise<boolean> {
+    async recordIfNew(_deliveryId: string): Promise<boolean> {
       return true;
     },
   },
 };
 
 /** Substitua pela sua fila. */
-export const fila = {
-  async publicar(_evento: unknown): Promise<void> {},
+export const queue = {
+  async publish(_event: unknown): Promise<void> {},
 };

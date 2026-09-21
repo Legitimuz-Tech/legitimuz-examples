@@ -1,37 +1,37 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
-import { db, fila } from "@/lib/stubs";
+import { db, queue } from "@/lib/stubs";
 
-const TOLERANCIA_SEGUNDOS = 300;
+const TOLERANCE_SECONDS = 300;
 
 export async function POST(request: Request) {
   // CORPO CRU, antes de qualquer parse. Reserializar quebra a assinatura.
-  const corpoCru = await request.text();
-  const assinatura = request.headers.get("x-legitimuz-signature") ?? "";
-  const entregaId = request.headers.get("x-legitimuz-delivery") ?? "";
+  const rawBody = await request.text();
+  const signature = request.headers.get("x-legitimuz-signature") ?? "";
+  const deliveryId = request.headers.get("x-legitimuz-delivery") ?? "";
 
-  if (!assinaturaValida(corpoCru, assinatura, process.env.LEGITIMUZ_WEBHOOK_SECRET!)) {
+  if (!isSignatureValid(rawBody, signature, process.env.LEGITIMUZ_WEBHOOK_SECRET!)) {
     return new Response(null, { status: 401 });
   }
 
-  const inedita = await db.entregas.registrarSeInedita(entregaId);
-  if (!inedita) return new Response(null, { status: 200 });
+  const isNew = await db.deliveries.recordIfNew(deliveryId);
+  if (!isNew) return new Response(null, { status: 200 });
 
-  await fila.publicar(JSON.parse(corpoCru));
+  await queue.publish(JSON.parse(rawBody));
   return new Response(null, { status: 200 });
 }
 
-function assinaturaValida(corpoCru: string, header: string, segredo: string): boolean {
-  const partes = Object.fromEntries(header.split(",").map((p) => p.split("=") as [string, string]));
+function isSignatureValid(rawBody: string, header: string, secret: string): boolean {
+  const parts = Object.fromEntries(header.split(",").map((p) => p.split("=") as [string, string]));
 
-  const timestamp = Number(partes.t);
-  const recebida = partes.v1;
-  if (!timestamp || !recebida) return false;
+  const timestamp = Number(parts.t);
+  const received = parts.v1;
+  if (!timestamp || !received) return false;
 
-  if (Math.abs(Math.floor(Date.now() / 1000) - timestamp) > TOLERANCIA_SEGUNDOS) return false;
+  if (Math.abs(Math.floor(Date.now() / 1000) - timestamp) > TOLERANCE_SECONDS) return false;
 
-  const esperada = createHmac("sha256", segredo).update(`${timestamp}.${corpoCru}`).digest("hex");
+  const expected = createHmac("sha256", secret).update(`${timestamp}.${rawBody}`).digest("hex");
 
-  const a = Buffer.from(esperada, "utf8");
-  const b = Buffer.from(recebida, "utf8");
+  const a = Buffer.from(expected, "utf8");
+  const b = Buffer.from(received, "utf8");
   return a.length === b.length && timingSafeEqual(a, b);
 }

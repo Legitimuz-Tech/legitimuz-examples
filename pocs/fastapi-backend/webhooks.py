@@ -7,43 +7,43 @@ import time
 from fastapi import Request, Response
 
 from main import app
-from stubs import db, fila
+from stubs import db, queue
 
-TOLERANCIA_SEGUNDOS = 300
+TOLERANCE_SECONDS = 300
 
 
-def assinatura_valida(corpo_cru: bytes, header: str, segredo: str) -> bool:
-    partes = dict(p.split("=", 1) for p in header.split(",") if "=" in p)
+def is_signature_valid(raw_body: bytes, header: str, secret: str) -> bool:
+    parts = dict(p.split("=", 1) for p in header.split(",") if "=" in p)
     try:
-        timestamp = int(partes["t"])
-        recebida = partes["v1"]
+        timestamp = int(parts["t"])
+        received = parts["v1"]
     except (KeyError, ValueError):
         return False
 
-    if abs(int(time.time()) - timestamp) > TOLERANCIA_SEGUNDOS:
+    if abs(int(time.time()) - timestamp) > TOLERANCE_SECONDS:
         return False
 
-    esperada = hmac.new(
-        segredo.encode(), f"{timestamp}.".encode() + corpo_cru, hashlib.sha256
+    expected = hmac.new(
+        secret.encode(), f"{timestamp}.".encode() + raw_body, hashlib.sha256
     ).hexdigest()
 
-    return hmac.compare_digest(esperada, recebida)
+    return hmac.compare_digest(expected, received)
 
 
 @app.post("/api/webhooks/legitimuz")
-async def receber(request: Request):
+async def receive(request: Request):
     # await request.body() devolve os BYTES originais. Um modelo Pydantic aqui já
     # reserializaria o JSON, e a assinatura passaria a falhar sempre.
-    corpo_cru = await request.body()
+    raw_body = await request.body()
     header = request.headers.get("x-legitimuz-signature", "")
 
-    if not assinatura_valida(corpo_cru, header, os.environ["LEGITIMUZ_WEBHOOK_SECRET"]):
+    if not is_signature_valid(raw_body, header, os.environ["LEGITIMUZ_WEBHOOK_SECRET"]):
         return Response(status_code=401)
 
-    entrega = request.headers.get("x-legitimuz-delivery", "")
-    if not await db.registrar_se_inedita(entrega):
+    delivery_id = request.headers.get("x-legitimuz-delivery", "")
+    if not await db.record_if_new(delivery_id):
         return Response(status_code=200)
 
-    await fila.publicar(json.loads(corpo_cru))
+    await queue.publish(json.loads(raw_body))
 
     return Response(status_code=200)

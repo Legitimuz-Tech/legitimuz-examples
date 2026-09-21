@@ -4,35 +4,35 @@ from dataclasses import dataclass
 
 
 @dataclass
-class Usuario:
+class User:
     id: str
 
 
 @dataclass
-class Cadastro:
+class Registration:
     id: str
     cpf: str
 
 
-async def autenticar() -> Usuario:
+async def authenticate() -> User:
     """Dependência simulada. Troque pela sua sessão real."""
-    return Usuario(id="usuario-1")
+    return User(id="user-1")
 
 
 class _Db:
-    async def cadastro_por_usuario(self, _usuario_id: str) -> Cadastro:
-        return Cadastro(id="pedido-4471", cpf="000.000.000-00")
+    async def registration_by_user(self, _user_id: str) -> Registration:
+        return Registration(id="pedido-4471", cpf="000.000.000-00")
 
-    async def vincular(self, _cadastro_id: str, _verificacao_public_id: str) -> None: ...
+    async def link(self, _registration_id: str, _verification_public_id: str) -> None: ...
 
-    async def registrar_se_inedita(self, _delivery_id: str) -> bool:
+    async def record_if_new(self, _delivery_id: str) -> bool:
         """Deduplica pelo header X-Legitimuz-Delivery."""
         return True
 
 
-class _Fila:
-    async def publicar(self, _evento: dict) -> None: ...
+class _Queue:
+    async def publish(self, _event: dict) -> None: ...
 
 
 db = _Db()
-fila = _Fila()
+queue = _Queue()

@@ -14,21 +14,21 @@ handler que recebe o desfecho.
 ## Arquivos
 
 ```
-app/api/verificacoes/route.ts        # cria a verificação
-app/api/webhooks/legitimuz/route.ts  # recebe o desfecho
-app/cadastro/page.tsx                # abre o fluxo
-lib/stubs.ts                         # autenticar(), db e fila — substitua tudo
-package.json                         # referência de dependência, sem lockfile
-.env.example                         # as três variáveis
+app/api/verifications/route.ts      # cria a verificação
+app/api/webhooks/legitimuz/route.ts # recebe o desfecho
+app/registration/page.tsx           # abre o fluxo
+lib/stubs.ts                        # authenticate(), db e queue — substitua tudo
+package.json                        # referência de dependência, sem lockfile
+.env.example                        # as três variáveis
 ```
 
 ## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
-| `app/api/verificacoes/route.ts` | `app/api/` | os quatro passos numerados da criação |
+| `app/api/verifications/route.ts` | `app/api/` | os quatro passos numerados da criação |
 | `app/api/webhooks/legitimuz/route.ts` | `app/api/` | `request.text()` dá o corpo cru |
-| `app/cadastro/page.tsx` | a tela de cadastro | a máquina de três estados |
+| `app/registration/page.tsx` | a tela de cadastro | a máquina de três estados |
 | `lib/stubs.ts` | **não vai** | é o contrato do que o seu código precisa oferecer |
 
 ## Envs
@@ -43,10 +43,10 @@ Sem prefixo `NEXT_PUBLIC_`: as três só existem no servidor.
 
 ## Pontos de atenção
 
-- **A tela nunca libera o cadastro.** Ela só muda para "aguardando". Quem libera é o handler de
+- **A tela nunca libera o cadastro.** Ela só muda para `waiting`. Quem libera é o handler de
   webhook, no servidor, onde o titular não pode interferir.
 - **Grave o vínculo antes de responder.** Sem ele o webhook chega e você não sabe de quem é.
-- **O `cancelado` no efeito.** Entre o `fetch` e o `mount`, o componente pode ter desmontado; sem a
+- **O `cancelled` no efeito.** Entre o `fetch` e o `mount`, o componente pode ter desmontado; sem a
   flag, o widget monta num container que já saiu da árvore.
 - **`request.text()`, não `request.json()`**, na rota de webhook.
 

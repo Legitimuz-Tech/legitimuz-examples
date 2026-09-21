@@ -3,19 +3,19 @@ import os
 import httpx
 from fastapi import Depends, FastAPI, HTTPException
 
-from stubs import autenticar, db
+from stubs import authenticate, db
 
 app = FastAPI()
 API = "https://api.legitimuz.com/public/verifications"
 
 
-@app.post("/api/verificacoes")
-async def criar_verificacao(usuario=Depends(autenticar)):
+@app.post("/api/verifications")
+async def create_verification(user=Depends(authenticate)):
     # O documento vem do SEU cadastro, nunca do corpo da requisição.
-    cadastro = await db.cadastro_por_usuario(usuario.id)
+    registration = await db.registration_by_user(user.id)
 
     async with httpx.AsyncClient(timeout=10) as client:
-        resposta = await client.post(
+        response = await client.post(
             API,
             headers={
                 "X-API-Key": os.environ["LEGITIMUZ_API_KEY"],
@@ -23,17 +23,17 @@ async def criar_verificacao(usuario=Depends(autenticar)):
             },
             json={
                 "schema_version": "1.0",
-                "ref_id": cadastro.id,
-                "document": {"type": "cpf", "number": cadastro.cpf},
+                "ref_id": registration.id,
+                "document": {"type": "cpf", "number": registration.cpf},
                 "flow_public_id": os.environ["LEGITIMUZ_FLOW_ID"],
             },
         )
 
-    if resposta.is_error:
-        raise HTTPException(status_code=502, detail="legitimuz_indisponivel")
+    if response.is_error:
+        raise HTTPException(status_code=502, detail="legitimuz_unavailable")
 
-    dados = resposta.json()
-    await db.vincular(cadastro.id, dados["verification"]["public_id"])
+    data = response.json()
+    await db.link(registration.id, data["verification"]["public_id"])
 
     # Só a entry volta ao cliente. O resto fica no servidor.
-    return {"entry": dados["entry"]}
+    return {"entry": data["entry"]}

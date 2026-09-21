@@ -14,18 +14,18 @@ entrega o corpo cru ao handler de webhook.
 ## Arquivos
 
 ```
-main.py             # POST /api/verificacoes
-webhooks.py         # POST /api/webhooks/legitimuz, com a assinatura conferida
-stubs.py            # autenticar(), db e fila — substitua tudo
-requirements.txt    # referência de dependência
-.env.example        # as três variáveis
+main.py          # POST /api/verifications
+webhooks.py      # POST /api/webhooks/legitimuz, com a assinatura conferida
+stubs.py         # authenticate(), db e queue — substitua tudo
+requirements.txt # referência de dependência
+.env.example     # as três variáveis
 ```
 
 ## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
-| `main.py` | junto das suas rotas | a chamada de criação e o `Depends(autenticar)` |
+| `main.py` | junto das suas rotas | a chamada de criação e o `Depends(authenticate)` |
 | `webhooks.py` | junto das suas rotas | a conferência precisa do corpo em bytes |
 | `stubs.py` | **não vai** | é o contrato do que o seu código precisa oferecer |
 
@@ -42,14 +42,14 @@ LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 - **Não declare o corpo do webhook como modelo Pydantic.** O FastAPI faria o parse, o
   `request.body()` viria vazio ou reserializado, e a conferência falharia em toda entrega.
 - **A string assinada é `t.corpo` em bytes.** Aqui ela é montada como
-  `f"{timestamp}.".encode() + corpo_cru`, sem decodificar o corpo — decodificar e recodificar pode
+  `f"{timestamp}.".encode() + raw_body`, sem decodificar o corpo — decodificar e recodificar pode
   alterar bytes.
 - **`hmac.compare_digest`**, não `==`: comparação em tempo constante.
 - **O CPF vem do seu cadastro**, nunca do corpo da requisição.
 
 ## Limitações
 
-`autenticar` é uma dependência simulada, `db` e `fila` são stubs. Sem retry na criação — o
+`authenticate` é uma dependência simulada, `db` e `queue` são stubs. Sem retry na criação — o
 catálogo de quando repetir está em [erros](https://documentacao.legitimuz.com/api/errors). Sem
 migration e sem observabilidade.
 

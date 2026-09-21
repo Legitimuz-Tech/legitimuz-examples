@@ -21,8 +21,8 @@ voltou dois dias depois e encontrou uma tela quebrada.
 ## Arquivos
 
 ```
-app/api/verificacoes/route.ts  # os três casos, numerados
-lib/stubs.ts                   # autenticar() e db — substitua
+app/api/verifications/route.ts # os três casos, numerados
+lib/stubs.ts                   # authenticate() e db — substitua
 package.json                   # referência de dependência, sem lockfile
 .env.example                   # as três variáveis
 ```
@@ -31,10 +31,10 @@ package.json                   # referência de dependência, sem lockfile
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
-| `app/api/verificacoes/route.ts` | a sua rota de criação | substitui a criação ingênua das outras POCs |
+| `app/api/verifications/route.ts` | a sua rota de criação | substitui a criação ingênua das outras POCs |
 | `lib/stubs.ts` | **não vai** | mostra as colunas que o seu cadastro precisa ter |
 
-O seu cadastro precisa guardar `ref_id`, `expira_em` e `desfecho`. Sem as três, não há como decidir
+O seu cadastro precisa guardar `ref_id`, `expires_at` e `outcome`. Sem as três, não há como decidir
 qual dos casos é.
 
 ## Envs

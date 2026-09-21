@@ -13,21 +13,21 @@ o fluxo e o segredo do webhook não.
 ## Arquivos
 
 ```
-lib/canais.ts                     # o registro: três credenciais por canal
-lib/assinatura.ts                 # a conferência, recebendo o segredo do canal
-lib/stubs.ts                      # autenticar(), db e fila — substitua
-app/api/verificacoes/route.ts     # resolve o canal antes de escolher a credencial
-app/api/webhooks/[canal]/route.ts # um endpoint por canal
-.env.example                      # as variáveis com sufixo por canal
+lib/channels.ts                     # o registro: três credenciais por canal
+lib/signature.ts                    # a conferência, recebendo o segredo do canal
+lib/stubs.ts                        # authenticate(), db e queue — substitua
+app/api/verifications/route.ts      # resolve o canal antes de escolher a credencial
+app/api/webhooks/[channel]/route.ts # um endpoint por canal
+.env.example                        # as variáveis com sufixo por canal
 ```
 
 ## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
-| `lib/canais.ts` | junto da sua config | mantém as três credenciais juntas por canal |
-| `app/api/verificacoes/route.ts` | a sua rota de criação | mostra o canal vindo do cadastro |
-| `app/api/webhooks/[canal]/route.ts` | a sua rota de webhook | o canal no caminho, não no corpo |
+| `lib/channels.ts` | junto da sua config | mantém as três credenciais juntas por canal |
+| `app/api/verifications/route.ts` | a sua rota de criação | mostra o canal vindo do cadastro |
+| `app/api/webhooks/[channel]/route.ts` | a sua rota de webhook | o canal no caminho, não no corpo |
 
 No dashboard, cada integração aponta o webhook dela para o seu caminho:
 `https://seu-dominio/api/webhooks/site` e `https://seu-dominio/api/webhooks/app`.

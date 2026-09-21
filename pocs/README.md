@@ -10,7 +10,7 @@ arquitetura.
 
 | Rota | O que faz |
 | --- | --- |
-| `POST /api/verificacoes` | autentica o seu usuário, chama a Legitimuz e devolve **só** a `entry` |
+| `POST /api/verifications` | autentica o seu usuário, chama a Legitimuz e devolve **só** a `entry` |
 | `POST /api/webhooks/legitimuz` | confere a assinatura, descarta repetição e enfileira |
 
 ## O que nunca sai do servidor
@@ -28,7 +28,7 @@ corpo e a conferência passa a falhar sempre.
 
 ## Stubs
 
-`autenticar()`, `db` e `fila` são stubs em todos os exemplos, num arquivo separado. É onde o seu
+`authenticate()`, `db` e `queue` são stubs em todos os exemplos, num arquivo separado. É onde o seu
 código entra. Nenhum exemplo traz migration, observabilidade ou retentativa própria.
 
 Detalhes em [segurança do webhook](https://documentacao.legitimuz.com/webhooks/security).

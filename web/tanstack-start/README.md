@@ -15,11 +15,11 @@ o `loader` da rota a chama, e o componente monta o widget no cliente.
 
 ```
 src/routes/__root.tsx             # o script no head da rota raiz
-src/routes/verificacao.tsx        # o loader chama a server function, o componente monta
-src/server/criar-verificacao.ts   # a server function que emite a credencial
+src/routes/verification.tsx       # o loader chama a server function, o componente monta
+src/server/create-verification.ts # a server function que emite a credencial
 src/hooks/useLegitimuz.ts         # mount no efeito, destroy no cleanup
 src/hooks/legitimuz.d.ts          # os tipos do global
-src/lib/stubs.ts                  # autenticar() e db — substitua
+src/lib/stubs.ts                  # authenticate() e db — substitua
 package.json                      # referência de dependência, sem lockfile
 .env.example                      # a chave e o fluxo, só no servidor
 ```
@@ -29,8 +29,8 @@ package.json                      # referência de dependência, sem lockfile
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
 | `src/routes/__root.tsx` | a sua rota raiz | o script vai no `head` da rota, não num HTML |
-| `src/server/criar-verificacao.ts` | junto das suas server functions | a chave só existe aqui |
-| `src/routes/verificacao.tsx` | a rota que abre a verificação | liga `loader` e componente |
+| `src/server/create-verification.ts` | junto das suas server functions | a chave só existe aqui |
+| `src/routes/verification.tsx` | a rota que abre a verificação | liga `loader` e componente |
 | `src/hooks/useLegitimuz.ts` | junto dos seus hooks | encapsula o efeito e o `destroy()` |
 | `src/lib/stubs.ts` | **não vai** | é o contrato do que o seu código precisa oferecer |
 
@@ -51,7 +51,7 @@ Sem prefixo público. A server function roda só no servidor.
 
 ## Limitações
 
-`autenticar()` e `db` são stubs. Não há endpoint de webhook — veja
+`authenticate()` e `db` são stubs. Não há endpoint de webhook — veja
 [`pocs/webhook-receiver`](../../pocs/webhook-receiver).
 
 ## Referência

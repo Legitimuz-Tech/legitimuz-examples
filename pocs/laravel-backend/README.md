@@ -13,21 +13,21 @@ fora do `VerifyCsrfToken` e receber o corpo sem transformação.
 ## Arquivos
 
 ```
-app/Http/Controllers/VerificacaoController.php   # POST /api/verificacoes
-app/Http/Controllers/WebhookController.php       # POST /api/webhooks/legitimuz
-app/Models/Entrega.php                           # deduplicação por delivery_id
-app/Jobs/ProcessarDesfecho.php                   # job vazio — a lógica é sua
-config/services.php                              # o bloco legitimuz
-routes/web.php                                   # as duas rotas e o withoutMiddleware
-database/migrations/..._create_entregas_table.php  # o índice único que faz a dedup funcionar
-.env.example                                     # as três variáveis
+app/Http/Controllers/VerificationController.php     # POST /api/verifications
+app/Http/Controllers/WebhookController.php          # POST /api/webhooks/legitimuz
+app/Models/Delivery.php                             # deduplicação por delivery_id
+app/Jobs/ProcessOutcome.php                         # job vazio — a lógica é sua
+config/services.php                                 # o bloco legitimuz
+routes/web.php                                      # as duas rotas e o withoutMiddleware
+database/migrations/..._create_deliveries_table.php # o índice único que faz a dedup funcionar
+.env.example                                        # as três variáveis
 ```
 
 ## Onde cada arquivo entra
 
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
-| `VerificacaoController.php` | `app/Http/Controllers/` | a chamada de criação |
+| `VerificationController.php` | `app/Http/Controllers/` | a chamada de criação |
 | `WebhookController.php` | `app/Http/Controllers/` | a conferência precisa do `getContent()` |
 | `config/services.php` | **acrescente** ao seu | não substitua o arquivo: adicione o bloco |
 | `routes/web.php` | **acrescente** ao seu | o `withoutMiddleware` é o detalhe que importa |
@@ -52,9 +52,9 @@ LEGITIMUZ_FLOW_ID=<FLOW_PUBLIC_ID>
 
 ## Limitações
 
-`ProcessarDesfecho` é um job vazio. Sem tratamento de `429` — veja
-[limites](https://documentacao.legitimuz.com/api/errors#limites-de-uso). O `VerificacaoController`
-assume que `$request->user()->cadastro` existe no seu modelo.
+`ProcessOutcome` é um job vazio. Sem tratamento de `429` — veja
+[limites](https://documentacao.legitimuz.com/api/errors#limites-de-uso). O `VerificationController`
+assume que `$request->user()->registration` existe no seu modelo.
 
 ## Referência
 

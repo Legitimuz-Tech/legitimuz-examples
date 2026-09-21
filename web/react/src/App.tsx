@@ -6,7 +6,7 @@ import type { WebSdkCompleteResult, WebSdkError, WebSdkEvent } from "./legitimuz
 const sdkUrl = import.meta.env.VITE_LEGITIMUZ_SDK_URL as string;
 
 export default function App() {
-  const [status, setStatus] = useState("montando");
+  const [status, setStatus] = useState("mounting");
   const [log, setLog] = useState<string[]>([]);
   const append = (line: string) => setLog((entries) => [...entries, line]);
 
@@ -14,12 +14,12 @@ export default function App() {
     <>
       <VerificationWidget
         sdkUrl={sdkUrl}
-        onReady={() => setStatus("pronto")}
+        onReady={() => setStatus("ready")}
         onEvent={(event: WebSdkEvent) => append(event.type)}
         // "terminou", não "aprovado": status é "submitted" ou "abandoned"
-        onComplete={(result: WebSdkCompleteResult) => setStatus(`fim: ${result.status}`)}
-        onCancel={() => setStatus("cancelado")}
-        onError={(error: WebSdkError) => setStatus(`erro ${error.code}`)}
+        onComplete={(result: WebSdkCompleteResult) => setStatus(`done: ${result.status}`)}
+        onCancel={() => setStatus("cancelled")}
+        onError={(error: WebSdkError) => setStatus(`error ${error.code}`)}
       />
       <p>{status}</p>
       <ul>

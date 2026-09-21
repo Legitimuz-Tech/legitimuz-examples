@@ -13,11 +13,11 @@ O endpoint que recebe o desfecho. É a peça que mais dá errado, e a que mais i
 ## Arquivos
 
 ```
-app/api/webhooks/legitimuz/route.ts  # confere, deduplica, enfileira
-worker.ts                            # o que fazer com verification.decided
-lib/tipos.ts                         # o envelope dos sete eventos
-lib/stubs.ts                         # db e fila — substitua
-.env.example                         # as três variáveis
+app/api/webhooks/legitimuz/route.ts # confere, deduplica, enfileira
+worker.ts                           # o que fazer com verification.decided
+lib/types.ts                        # o envelope dos sete eventos
+lib/stubs.ts                        # db e queue — substitua
+.env.example                        # as três variáveis
 ```
 
 ## Onde cada arquivo entra
@@ -26,7 +26,7 @@ lib/stubs.ts                         # db e fila — substitua
 | --- | --- | --- |
 | `app/api/webhooks/legitimuz/route.ts` | a sua rota de webhook | os três passos numerados |
 | `worker.ts` | junto do seu processamento assíncrono | o `switch` dos três status |
-| `lib/tipos.ts` | junto dos seus tipos | o envelope, com os campos opcionais certos |
+| `lib/types.ts` | junto dos seus tipos | o envelope, com os campos opcionais certos |
 
 ## Envs
 

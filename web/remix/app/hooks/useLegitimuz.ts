@@ -10,7 +10,7 @@ export type UseLegitimuzOptions = Omit<MountOptions, "target">;
 export function useLegitimuz(options: UseLegitimuzOptions) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const handleRef = useRef<LegitimuzWidgetHandle | null>(null);
-  const [status, setStatus] = useState("montando");
+  const [status, setStatus] = useState("mounting");
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -18,11 +18,11 @@ export function useLegitimuz(options: UseLegitimuzOptions) {
     handleRef.current = window.Legitimuz.mount({
       ...options,
       target: containerRef.current,
-      onReady: () => setStatus("pronto"),
+      onReady: () => setStatus("ready"),
       // "terminou", não "aprovado": status é "submitted" ou "abandoned"
-      onComplete: (result) => setStatus(`fim: ${result.status}`),
-      onCancel: () => setStatus("cancelado"),
-      onError: (error) => setStatus(`erro ${error.code}`),
+      onComplete: (result) => setStatus(`done: ${result.status}`),
+      onCancel: () => setStatus("cancelled"),
+      onError: (error) => setStatus(`error ${error.code}`),
     });
 
     return () => handleRef.current?.destroy();

@@ -1,12 +1,12 @@
 import { db } from "@/lib/stubs";
 
 export async function GET(_: Request, { params }: { params: { token: string } }) {
-  // `consumir` é um UPDATE condicional, não um SELECT seguido de UPDATE: dois cliques
+  // `consume` é um UPDATE condicional, não um SELECT seguido de UPDATE: dois cliques
   // simultâneos no mesmo link não podem resolver os dois.
-  const link = await db.links.consumir(params.token);
+  const link = await db.links.consume(params.token);
 
   if (!link) return new Response("Link inválido ou já usado", { status: 410 });
-  if (new Date(link.expira_em) < new Date()) {
+  if (new Date(link.expires_at) < new Date()) {
     return new Response("Link expirado", { status: 410 });
   }
 

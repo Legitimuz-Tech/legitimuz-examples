@@ -4,33 +4,33 @@ import "net/http"
 
 // Substitua tudo neste arquivo pela sua implementação.
 
-type Usuario struct{ ID string }
+type User struct{ ID string }
 
-type Cadastro struct {
+type Registration struct {
 	ID  string
 	CPF string
 }
 
-func autenticar(_ *http.Request) (Usuario, bool) {
-	return Usuario{ID: "usuario-1"}, true
+func authenticate(_ *http.Request) (User, bool) {
+	return User{ID: "user-1"}, true
 }
 
-type bancoFicticio struct{}
+type fakeDB struct{}
 
-func (bancoFicticio) CadastroPorUsuario(_ string) Cadastro {
-	return Cadastro{ID: "pedido-4471", CPF: "000.000.000-00"}
+func (fakeDB) RegistrationByUser(_ string) Registration {
+	return Registration{ID: "pedido-4471", CPF: "000.000.000-00"}
 }
 
-func (bancoFicticio) Vincular(_, _ string) {}
+func (fakeDB) Link(_, _ string) {}
 
-// RegistrarSeInedita deduplica pelo header X-Legitimuz-Delivery.
-func (bancoFicticio) RegistrarSeInedita(_ string) bool { return true }
+// RecordIfNew deduplica pelo header X-Legitimuz-Delivery.
+func (fakeDB) RecordIfNew(_ string) bool { return true }
 
-type filaFicticia struct{}
+type fakeQueue struct{}
 
-func (filaFicticia) Publicar(_ []byte) {}
+func (fakeQueue) Publish(_ []byte) {}
 
 var (
-	db   = bancoFicticio{}
-	fila = filaFicticia{}
+	db    = fakeDB{}
+	queue = fakeQueue{}
 )

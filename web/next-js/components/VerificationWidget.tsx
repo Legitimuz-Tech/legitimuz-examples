@@ -9,7 +9,7 @@ import type { WebSdkCompleteResult, WebSdkError, WebSdkEvent } from "@/types/leg
 
 export function VerificationWidget({ sdkUrl }: { sdkUrl: string }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const [status, setStatus] = useState("montando");
+  const [status, setStatus] = useState("mounting");
   const [log, setLog] = useState<string[]>([]);
 
   useEffect(() => {
@@ -18,12 +18,12 @@ export function VerificationWidget({ sdkUrl }: { sdkUrl: string }) {
     const handle = window.Legitimuz.mount({
       sdkUrl,
       target: containerRef.current,
-      onReady: () => setStatus("pronto"),
-      onEvent: (event: WebSdkEvent) => setLog((l) => [...l, event.type]),
+      onReady: () => setStatus("ready"),
+      onEvent: (event: WebSdkEvent) => setLog((entries) => [...entries, event.type]),
       // "terminou", não "aprovado": status é "submitted" ou "abandoned"
-      onComplete: (result: WebSdkCompleteResult) => setStatus(`fim: ${result.status}`),
-      onCancel: () => setStatus("cancelado"),
-      onError: (error: WebSdkError) => setStatus(`erro ${error.code}`),
+      onComplete: (result: WebSdkCompleteResult) => setStatus(`done: ${result.status}`),
+      onCancel: () => setStatus("cancelled"),
+      onError: (error: WebSdkError) => setStatus(`error ${error.code}`),
     });
 
     return () => handle.destroy();

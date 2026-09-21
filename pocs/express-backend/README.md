@@ -14,11 +14,11 @@ endpoint que recebe o desfecho e confere a assinatura.
 ## Arquivos
 
 ```
-server.ts          # as duas rotas
-assinatura.ts      # conferência do X-Legitimuz-Signature
-stubs.ts           # autenticar(), db e fila — substitua tudo
-package.json       # referência de dependência, sem lockfile
-.env.example       # as três variáveis
+server.ts    # as duas rotas
+signature.ts # conferência do X-Legitimuz-Signature
+stubs.ts     # authenticate(), db e queue — substitua tudo
+package.json # referência de dependência, sem lockfile
+.env.example # as três variáveis
 ```
 
 ## Onde cada arquivo entra
@@ -26,7 +26,7 @@ package.json       # referência de dependência, sem lockfile
 | Arquivo | Destino | Por quê |
 | --- | --- | --- |
 | `server.ts` | junto das suas rotas | as duas rotas, com o middleware certo em cada uma |
-| `assinatura.ts` | uma pasta de utilitários | a conferência é a mesma em qualquer framework Node |
+| `signature.ts` | uma pasta de utilitários | a conferência é a mesma em qualquer framework Node |
 | `stubs.ts` | **não vai** | é o contrato do que o seu código precisa oferecer |
 
 ## Envs
@@ -54,8 +54,8 @@ integração **sandbox**; nenhuma das três vai para o browser.
 
 ## Limitações
 
-`autenticar()`, `db` e `fila` são stubs sem implementação real. Sem migration,
-observabilidade ou retentativa própria. O `resposta.ok` não é conferido, para o exemplo caber numa
+`authenticate()`, `db` e `queue` são stubs sem implementação real. Sem migration,
+observabilidade ou retentativa própria. O `response.ok` não é conferido, para o exemplo caber numa
 tela — no seu código, confira.
 
 ## Referência

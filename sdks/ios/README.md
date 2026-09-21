@@ -15,9 +15,9 @@ A SDK renderiza o fluxo dentro do seu app a partir do **embed URL** que o seu ba
 ## Arquivos
 
 ```
-Verificacao/VerificationFlow.swift   # parse, sessão, apresentação e outcome
-Verificacao/Info.plist               # as três chaves de permissão
-conferir-xcframework.sh              # baixa e confere o SHA-256 antes de embutir
+Verification/VerificationFlow.swift # parse, sessão, apresentação e outcome
+Verification/Info.plist             # as três chaves de permissão
+check-xcframework.sh                # baixa e confere o SHA-256 antes de embutir
 ```
 
 ## Onde cada arquivo entra
@@ -26,14 +26,14 @@ conferir-xcframework.sh              # baixa e confere o SHA-256 antes de embuti
 | --- | --- | --- |
 | `VerificationFlow.swift` | junto das suas telas | o ciclo completo num arquivo |
 | `Info.plist` | **acrescente** ao seu | só as três chaves, não o arquivo inteiro |
-| `conferir-xcframework.sh` | o seu script de setup | integridade antes de embutir |
+| `check-xcframework.sh` | o seu script de setup | integridade antes de embutir |
 
 ## Instalação
 
 **Não há SPM e não há CocoaPods.** A SDK é um `.xcframework` fechado:
 
 ```bash
-./conferir-xcframework.sh <VERSAO>
+./check-xcframework.sh <VERSAO>
 ```
 
 No Xcode, vá ao target em **General → Frameworks, Libraries, and Embedded Content**, clique em

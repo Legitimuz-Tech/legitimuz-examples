@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\VerificacaoController;
+use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/api/verificacoes', [VerificacaoController::class, 'store'])->middleware('auth');
+Route::post('/api/verifications', [VerificationController::class, 'store'])->middleware('auth');
 
 // Fora do grupo `web`: o CSRF do Laravel recusaria o POST da Legitimuz, que não tem sessão.
 Route::post('/api/webhooks/legitimuz', WebhookController::class)
