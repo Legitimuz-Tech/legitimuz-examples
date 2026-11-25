@@ -33,6 +33,7 @@ Duas rotas, os mesmos nomes em toda linguagem: `POST /api/verifications` e
 | :-: | --- | --- |
 | <img src="https://cdn.simpleicons.org/nextdotjs/888888" width="16" /> | [`pocs/next-checkout`](pocs/next-checkout) | [Checkout Next.js](https://documentacao.legitimuz.com/guides/pocs/next-checkout) |
 | <img src="https://cdn.simpleicons.org/express/888888" width="16" /> | [`pocs/express-backend`](pocs/express-backend) | [Backend Express](https://documentacao.legitimuz.com/guides/pocs/express-backend) |
+| <img src="https://cdn.simpleicons.org/express/888888" width="16" /> | [`pocs/kyb-onboarding`](pocs/kyb-onboarding) | [Verificação de empresa (KYB)](https://documentacao.legitimuz.com/guides/pocs/kyb-onboarding) |
 | <img src="https://cdn.simpleicons.org/fastapi/009688" width="16" /> | [`pocs/fastapi-backend`](pocs/fastapi-backend) | [Backend FastAPI](https://documentacao.legitimuz.com/guides/pocs/fastapi-backend) |
 | <img src="https://cdn.simpleicons.org/laravel/ff2d20" width="16" /> | [`pocs/laravel-backend`](pocs/laravel-backend) | [Backend Laravel](https://documentacao.legitimuz.com/guides/pocs/laravel-backend) |
 | <img src="https://cdn.simpleicons.org/go/00add8" width="16" /> | [`pocs/go-backend`](pocs/go-backend) | [Backend Go](https://documentacao.legitimuz.com/guides/pocs/go-backend) |
